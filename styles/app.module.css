@@ -8,6 +8,10 @@
     font-weight: bold;
 }
 
+.menu {
+    display: none;
+}
+
 @media (max-width:800px) {
     .list {
         font-size: 14px;
@@ -27,5 +31,18 @@
     }
     .list {
         gap: 14px;
+    }
+}
+
+@media (max-width: 549px) {
+    .list {
+        display: none;
+    }
+    .menu {
+        display: flex;
+        flex-direction: column;
+    }
+    .menu li {
+        margin-top: 3px;
     }
 }
