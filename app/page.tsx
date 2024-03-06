@@ -27,8 +27,7 @@ export default function Home() {
         const data = await response.json();
         console.log(data.bitcoin);
         toast.dismiss();
-        // setBitcoinPrice(data.bitcoin);
-        // console.log(bitcoinPrice)
+        setBitcoinPrice(data.bitcoin);
         toast.success("Bitcoin data fetched");
       } catch (error) {
         toast.dismiss();
