@@ -8,7 +8,7 @@ import Chart from "@/components/TradingChat";
 import Link from "next/link";
 
 export default function Home() {
-  const [bitcoinPrice, setBitcoinPrice] = useState({});
+  const [bitcoinPrice, setBitcoinPrice] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,8 +25,10 @@ export default function Home() {
         }
 
         const data = await response.json();
+        console.log(data.bitcoin);
         toast.dismiss();
-        setBitcoinPrice(data);
+        // setBitcoinPrice(data.bitcoin);
+        // console.log(bitcoinPrice)
         toast.success("Bitcoin data fetched");
       } catch (error) {
         toast.dismiss();
@@ -72,22 +74,44 @@ export default function Home() {
           Cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
         </p>
         <section className={`flex ${styles.section1} `}>
-          <div className={`flex flex-col gap-2 bg-white ${styles.leftpanel}`}>
-            <div className="p-6">
+          <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
+            <div className="p-6 bg-white rounded-md">
               <div>
-                <div>
-                  <div>
+                <div className="flex gap-2 items-center">
+                  <div className="flex gap-2 items-center">
                     <Image
                       src="/bitcoin.svg"
                       alt="bitcoin"
                       width={30}
                       height={30}
                     />
-                    <p className="font-bold text-lg">Bitcoin <span className="font-medium text-sm text-[#5D667B]">BTC</span> </p>
+                    <p className="font-bold text-lg">
+                      Bitcoin{" "}
+                      <span className="font-medium text-sm text-[#5D667B]">
+                        BTC
+                      </span>{" "}
+                    </p>
                   </div>
-                  <p className="bg-[#808A9D] w-[80px] h-[40px] flex justify-center items-center rounded-md text-white">Rank #1</p>
+                  <p className="bg-[#808A9D] w-[80px] h-[40px] flex justify-center items-center rounded-md text-white">
+                    Rank #1
+                  </p>
                 </div>
-                <div></div>
+                <div>
+                  <div>
+                    {/* @ts-ignore */}
+                    <p>{bitcoinPrice && bitcoinPrice.usd}</p>
+                    <div>
+                      {/* @ts-ignore */}
+                      <p>{bitcoinPrice && bitcoinPrice.inr}</p>
+                      <div>
+                        {/* @ts-ignore */}
+                        <span>{bitcoinPrice && bitcoinPrice.usd_24h_change}</span>
+                        <p>(24H)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p></p>
+                </div>
               </div>
               <div className={`${styles.leftpanelchart}`}>
                 <Chart />
