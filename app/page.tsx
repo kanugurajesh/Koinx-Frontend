@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/app.module.css";
 import toast, { Toaster } from "react-hot-toast";
-import Chart from "@/components/TradingChat"
+import Chart from "@/components/TradingChat";
 import Link from "next/link";
 
 export default function Home() {
@@ -65,14 +65,33 @@ export default function Home() {
           <li className="w-6 h-1 bg-black"></li>
         </ul>
       </nav>
-      <main className={`bg-[#EFF2F5] h-full w-full ${styles.main}`}>
-        <p className="text-sm">
-          cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
+      <main
+        className={`bg-[#EFF2F5] h-full w-full ${styles.main} flex flex-col gap-2`}
+      >
+        <p className="text-sm mt-4 mb-2">
+          Cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
         </p>
-        <section className="flex">
-          <div className="flex flex-col gap-2">
-            <div>
-              <Chart />
+        <section className={`flex ${styles.section1} `}>
+          <div className={`flex flex-col gap-2 bg-white ${styles.leftpanel}`}>
+            <div className="p-6">
+              <div>
+                <div>
+                  <div>
+                    <Image
+                      src="/bitcoin.svg"
+                      alt="bitcoin"
+                      width={30}
+                      height={30}
+                    />
+                    <p className="font-bold text-lg">Bitcoin <span className="font-medium text-sm text-[#5D667B]">BTC</span> </p>
+                  </div>
+                  <p className="bg-[#808A9D] w-[80px] h-[40px] flex justify-center items-center rounded-md text-white">Rank #1</p>
+                </div>
+                <div></div>
+              </div>
+              <div className={`${styles.leftpanelchart}`}>
+                <Chart />
+              </div>
             </div>
             <div></div>
           </div>
