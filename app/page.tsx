@@ -27,15 +27,6 @@ export default function Home() {
         const data = await response.json();
         toast.dismiss();
         setBitcoinPrice(data.bitcoin);
-        // setBitcoinPrice((data) => {
-        //   // Format USD
-        //   // @ts-ignore
-        //   data.usd = new Intl.NumberFormat('en-US').format(data.usd);
-        //   // @ts-ignore
-        //   data.inr = new Intl.NumberFormat('en-IN').format(data.inr);
-        //   return data;
-        // });
-
         toast.success("Bitcoin data fetched");
       } catch (error) {
         toast.dismiss();
@@ -82,9 +73,9 @@ export default function Home() {
         </p>
         <section className={`flex ${styles.section1} `}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
-            <div className="p-6 bg-white rounded-md">
-              <div className="flex flex-col gap-5">
-                <div className="flex gap-2 items-center">
+            <div className="flex flex-col p-6 bg-white rounded-md gap-6">
+              <div className="flex flex-col gap-8">
+                <div className="flex gap-7 items-center">
                   <div className="flex gap-2 items-center">
                     <Image
                       src="/bitcoin.svg"
@@ -103,29 +94,27 @@ export default function Home() {
                     Rank #1
                   </p>
                 </div>
-                <div>
-                  <div className="flex flex-col gap-1">
-                    <div className="flex gap-3 items-center">
-                      <p className="text-xl font-bold">
-                        ${" "}
-                        {/* @ts-ignore */}
-                        {bitcoinPrice && Intl.NumberFormat("en-IN").format(bitcoinPrice.usd)}
-                      </p>
-                      <div className="flex gap-2 items-center">
-                        <span>
-                        {/* @ts-ignore */}
-                          {bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}%
-                        </span>
-                        <p>(24H)</p>
-                      </div>
-                    </div>
-                    <p className="text-sm font-bold">
-                      ₹{" "}
+                <div className="flex flex-col gap-1">
+                  <div className="flex gap-8 items-center">
+                    <p className="text-2xl font-bold">
+                      ${" "}
                       {/* @ts-ignore */}
-                      {bitcoinPrice && Intl.NumberFormat("en-US").format(bitcoinPrice.inr)}
+                      {bitcoinPrice && Intl.NumberFormat("en-IN").format(bitcoinPrice.usd)}
                     </p>
+                    <div className="flex gap-2 items-center">
+                      <span className="flex gap-1 items-center text-[#14B079] bg-[#EBF9F4] w-[84px] h-[28px] justify-center rounded-md">
+                        <Image src="/arrowup.svg" alt="" width={10} height={10} />
+                      {/* @ts-ignore */}
+                        {bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}%
+                      </span>
+                      <p className="text-[#768396] text-sm">(24H)</p>
+                    </div>
                   </div>
-                  <p></p>
+                  <p className="text-md font-semibold">
+                    ₹{" "}
+                    {/* @ts-ignore */}
+                    {bitcoinPrice && Intl.NumberFormat("en-US").format(bitcoinPrice.inr)}
+                  </p>
                 </div>
               </div>
               <div className={`${styles.leftpanelchart}`}>
