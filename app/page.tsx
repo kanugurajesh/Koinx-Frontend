@@ -55,7 +55,7 @@ export default function Home() {
           <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Crypto Taxes</li>
           <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Free Tools</li>
           <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Resource Center</li>
-          <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer pb-1">
+          <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer mb-1">
             Get Started
           </li>
         </ul>
@@ -123,14 +123,19 @@ export default function Home() {
             </div>
             <div></div>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-5">
             <div className="bg-[#0052FE] w-[426px] rounded-md flex flex-col gap-7 justify-center items-center text-white p-10">
               <h1 className="font-bold text-2xl w-[268px] text-center">Get Started with Koinx for Free</h1>
               <p className="text-center w-[327px]">With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</p>
               <Image src="/mobile.svg" alt="mobile" width={200} height={200} />
               <Link href="/" className="w-[237px] h-[48px] text-black bg-white flex justify-center items-center font-bold rounded-md">Get Started for Free 🡪</Link>
             </div>
-            <div></div>
+            <div className="w-[427px] h-[225px] bg-white rounded-md">
+              <h1 className="font-semibold text-2xl p-5">Trending Coins (24h)</h1>
+              <div>
+
+              </div>
+            </div>
           </div>
         </section>
       </main>
