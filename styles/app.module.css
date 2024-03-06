@@ -1,0 +1,31 @@
+.navbar {
+    padding: 1px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.list {
+    font-weight: bold;
+}
+
+@media (max-width:800px) {
+    .list {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:720px) {
+    .list {
+        font-size: 12.5px;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .list {
+        gap: 14px;
+    }
+}

@@ -1,11 +1,14 @@
 import Image from "next/image";
+import styles from "@/styles/app.module.css";
 
 export default function Home() {
   return (
     <div>
-      <nav className="flex justify-between items-center p-2 pl-12 pr-12 border-[#DEDFE2] border-bottom border-b-2">
+      <nav
+        className={`flex justify-between items-center border-[#DEDFE2] border-bottom border-b-2 ${styles.navbar}`}
+      >
         <Image src={"/koinx.svg"} alt="koinx" width={100} height={100} />
-        <ul className="flex gap-6 font-bold items-center">
+        <ul className={`flex gap-6 items-center ${styles.list}`}>
           <li className="cursor-pointer">Crypto Taxes</li>
           <li className="cursor-pointer">Free Tools</li>
           <li className="cursor-pointer">Resource Center</li>
@@ -14,9 +17,7 @@ export default function Home() {
           </li>
         </ul>
       </nav>
-      <main className="bg-[#EFF2F5] h-full w-full">
-        {/* data */}
-      </main>
+      <main className="bg-[#EFF2F5] h-full w-full">{/* data */}</main>
     </div>
   );
 }
