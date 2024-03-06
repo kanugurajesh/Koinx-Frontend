@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState();
+  const [trendingCoins, setTrendingCoins] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +36,25 @@ export default function Home() {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const url = 'https://api.coingecko.com/api/v3/search/trending';
+    const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string
+    const options = {method: 'GET', headers: {'x-cg-pro-api-key': API_KEY }};
+    const fetchData = async () => {
+      await fetch(url, options)
+        .then(res => res.json())
+        .then(json => {
+          setTrendingCoins(json.coins)
+          console.log(json.coins)
+        })
+        .catch(err => {
+          toast.error("Error fetching trending coins")
+          console.error('error:' + err)
+        });
+    }
+    fetchData();
+  }, [])
 
   return (
     <div>
