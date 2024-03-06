@@ -26,8 +26,8 @@
 
 @media (max-width: 640px) {
     .navbar {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 14px;
+        padding-right: 14px;
     }
     .list {
         gap: 14px;
@@ -45,4 +45,10 @@
     .menu li {
         margin-top: 3px;
     }
+
+    .navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
 }
