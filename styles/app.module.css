@@ -12,6 +12,12 @@
     display: none;
 }
 
+.main {
+    padding: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
 @media (max-width:800px) {
     .list {
         font-size: 14px;
