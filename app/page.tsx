@@ -48,14 +48,14 @@ export default function Home() {
             alt="koinx"
             width={100}
             height={100}
-            className="cursor-pointer"
+            className="cursor-pointer pb-1"
           />
         </Link>
         <ul className={`flex gap-6 items-center ${styles.list}`}>
-          <li className="cursor-pointer">Crypto Taxes</li>
-          <li className="cursor-pointer">Free Tools</li>
-          <li className="cursor-pointer">Resource Center</li>
-          <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer">
+          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Crypto Taxes</li>
+          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Free Tools</li>
+          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Resource Center</li>
+          <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer pb-1">
             Get Started
           </li>
         </ul>
