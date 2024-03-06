@@ -17,12 +17,13 @@
     padding-right: 45px;
 }
 
-/* .section1 {
-    
-} */
+.section1 {
+    display: flex;
+    gap: 20px;   
+}
 
 .leftpanelchart {
-    width: 800px;
+    width: 881px;
     height: 500px;
 }
 

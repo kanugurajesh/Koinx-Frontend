@@ -71,7 +71,7 @@ export default function Home() {
         <p className="text-sm mt-4 mb-2">
           Cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
         </p>
-        <section className={`flex ${styles.section1} `}>
+        <section className={`${styles.section1}`}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
             <div className="flex flex-col p-6 bg-white rounded-md gap-6">
               <div className="flex flex-col gap-8">
@@ -124,7 +124,12 @@ export default function Home() {
             <div></div>
           </div>
           <div className="flex flex-col gap-2">
-            <div></div>
+            <div className="bg-[#0052FE] w-[426px] rounded-md flex flex-col gap-7 justify-center items-center text-white p-10">
+              <h1 className="font-bold text-2xl w-[268px] text-center">Get Started with Koinx for Free</h1>
+              <p className="text-center w-[327px]">With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</p>
+              <Image src="/mobile.svg" alt="mobile" width={200} height={200} />
+              <Link href="/" className="w-[237px] h-[48px] text-black bg-white flex justify-center items-center font-bold rounded-md">Get Started for Free 🡪</Link>
+            </div>
             <div></div>
           </div>
         </section>
