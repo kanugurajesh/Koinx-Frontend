@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/app.module.css";
 import toast, { Toaster } from "react-hot-toast";
+import Chart from "@/components/TradingChat"
 import Link from "next/link";
 
 export default function Home() {
-
   const [bitcoinPrice, setBitcoinPrice] = useState({});
 
   useEffect(() => {
@@ -27,9 +27,9 @@ export default function Home() {
         const data = await response.json();
         toast.dismiss();
         setBitcoinPrice(data);
-        toast.success("Bitcoin data fetched")
+        toast.success("Bitcoin data fetched");
       } catch (error) {
-        toast.dismiss()
+        toast.dismiss();
         toast.error("Cannot fetch bitcoin data");
       }
     };
@@ -69,6 +69,18 @@ export default function Home() {
         <p className="text-sm">
           cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
         </p>
+        <section className="flex">
+          <div className="flex flex-col gap-2">
+            <div>
+              <Chart />
+            </div>
+            <div></div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <div></div>
+            <div></div>
+          </div>
+        </section>
       </main>
     </div>
   );
