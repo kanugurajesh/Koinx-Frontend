@@ -25,9 +25,17 @@ export default function Home() {
         }
 
         const data = await response.json();
-        console.log(data.bitcoin);
         toast.dismiss();
         setBitcoinPrice(data.bitcoin);
+        // setBitcoinPrice((data) => {
+        //   // Format USD
+        //   // @ts-ignore
+        //   data.usd = new Intl.NumberFormat('en-US').format(data.usd);
+        //   // @ts-ignore
+        //   data.inr = new Intl.NumberFormat('en-IN').format(data.inr);
+        //   return data;
+        // });
+        
         toast.success("Bitcoin data fetched");
       } catch (error) {
         toast.dismiss();
@@ -98,13 +106,13 @@ export default function Home() {
                 <div>
                   <div>
                     {/* @ts-ignore */}
-                    <p>{bitcoinPrice && bitcoinPrice.usd}</p>
+                    <p className="font-bold text-xl">$ {bitcoinPrice && Intl.NumberFormat('en-US').format(bitcoinPrice.usd)}</p>
                     <div>
                       {/* @ts-ignore */}
-                      <p>{bitcoinPrice && bitcoinPrice.inr}</p>
+                      <p className="text-sm">₹ {bitcoinPrice && Intl.NumberFormat('en-IN').format(bitcoinPrice.inr)}%</p>
                       <div>
                         {/* @ts-ignore */}
-                        <span>{bitcoinPrice && bitcoinPrice.usd_24h_change}</span>
+                        <span>{bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}</span>
                         <p>(24H)</p>
                       </div>
                     </div>
