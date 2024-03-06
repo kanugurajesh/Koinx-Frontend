@@ -35,7 +35,7 @@ export default function Home() {
         //   data.inr = new Intl.NumberFormat('en-IN').format(data.inr);
         //   return data;
         // });
-        
+
         toast.success("Bitcoin data fetched");
       } catch (error) {
         toast.dismiss();
@@ -83,7 +83,7 @@ export default function Home() {
         <section className={`flex ${styles.section1} `}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
             <div className="p-6 bg-white rounded-md">
-              <div>
+              <div className="flex flex-col gap-5">
                 <div className="flex gap-2 items-center">
                   <div className="flex gap-2 items-center">
                     <Image
@@ -104,18 +104,26 @@ export default function Home() {
                   </p>
                 </div>
                 <div>
-                  <div>
-                    {/* @ts-ignore */}
-                    <p className="font-bold text-xl">$ {bitcoinPrice && Intl.NumberFormat('en-US').format(bitcoinPrice.usd)}</p>
-                    <div>
-                      {/* @ts-ignore */}
-                      <p className="text-sm">₹ {bitcoinPrice && Intl.NumberFormat('en-IN').format(bitcoinPrice.inr)}%</p>
-                      <div>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex gap-3 items-center">
+                      <p className="text-xl font-bold">
+                        ${" "}
                         {/* @ts-ignore */}
-                        <span>{bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}</span>
+                        {bitcoinPrice && Intl.NumberFormat("en-IN").format(bitcoinPrice.usd)}
+                      </p>
+                      <div className="flex gap-2 items-center">
+                        <span>
+                        {/* @ts-ignore */}
+                          {bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}%
+                        </span>
                         <p>(24H)</p>
                       </div>
                     </div>
+                    <p className="text-sm font-bold">
+                      ₹{" "}
+                      {/* @ts-ignore */}
+                      {bitcoinPrice && Intl.NumberFormat("en-US").format(bitcoinPrice.inr)}
+                    </p>
                   </div>
                   <p></p>
                 </div>
