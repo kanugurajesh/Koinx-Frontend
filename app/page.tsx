@@ -104,7 +104,7 @@ export default function Home() {
         // @ts-ignore
         price: firstValue.item.data.price,
         // @ts-ignore
-        sparkline: firstValue.item.sparkline
+        sparkline: firstValue.item.data.sparkline
       }
       tempList.push(data);
     }
@@ -543,12 +543,64 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="p-10 pt-20 pb-20">
-        <div>
+      <footer className="p-10 pt-20 pb-20 w-full flex flex-col gap-8">
+        <div className=" flex flex-col gap-5">
           <h1 className="font-semibold text-2xl">You May Also Like</h1>
           <div>
-            <div>
-              
+            <div className="flex w-[100%] gap-2 overflow-x-scroll" style={{scrollbarWidth:"none"}}>
+              {/* @ts-ignore */}
+              {likeCoinsList && likeCoinsList.map((obj) => {
+                return (
+                  <div className={`border-2  border-[#E3E3E3] rounded-lg p-4`} key={v4()}>
+                    <div className="w-[252px] h-[160px] flex gap-3 flex-col">
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src={obj.thumb}
+                          alt="data"
+                          width={30}
+                          height={30}
+                          style={{borderRadius:'50%'}}
+                          key={v4()}
+                        />
+                        <p>{obj.symbol}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ obj.price_change.toFixed(2) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{obj.price_change.toFixed(2) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                      </div>
+                      <p className="font-semibold text-xl">{obj.price}</p>
+                      <Image src={obj.sparkline} alt="sparkline" width={150} height={150} />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+        <div className=" flex flex-col gap-5">
+          <h1 className="font-semibold text-2xl">Trending Coins</h1>
+          <div>
+            <div className="flex w-[100%] gap-2 overflow-x-scroll" style={{scrollbarWidth:"none"}}>
+              {/* @ts-ignore */}
+              {likeCoinsList && likeCoinsList.map((obj) => {
+                return (
+                  <div className={`border-2  border-[#E3E3E3] rounded-lg p-4`} key={v4()}>
+                    <div className="w-[252px] h-[160px] flex gap-3 flex-col">
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src={obj.thumb}
+                          alt="data"
+                          width={30}
+                          height={30}
+                          style={{borderRadius:'50%'}}
+                          key={v4()}
+                        />
+                        <p>{obj.symbol}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ obj.price_change.toFixed(2) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{obj.price_change.toFixed(2) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                      </div>
+                      <p className="font-semibold text-xl">{obj.price}</p>
+                      <Image src={obj.sparkline} alt="sparkline" width={150} height={150} />
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
