@@ -49,6 +49,7 @@ export default function Home() {
       await fetch(url, options)
         .then((res) => res.json())
         .then((json) => {
+          console.log(json)
           setTrendingCoins(json.coins);
           console.log(json.coins + "coins")
         })
