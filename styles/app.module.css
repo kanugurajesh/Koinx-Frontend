@@ -154,3 +154,18 @@
         font-size: 14px;
     }
 }
+
+@media (max-width:1100px) {
+    .leftpanelchart {
+        width: 950px;
+    }
+
+    .leftpanellist {
+        justify-content: space-between;
+        font-size: 15px;
+    }
+
+    .rightpanel {
+        display: none;
+    }
+}

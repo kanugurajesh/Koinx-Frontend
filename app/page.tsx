@@ -212,7 +212,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col gap-5">
+          <div className={`flex flex-col gap-5 ${styles.rightpanel}`}>
             <div className={`bg-[#0052FE] ${styles.rightpanelnote} rounded-md flex flex-col gap-7 justify-center items-center text-white p-10`}>
               <h1 className="font-bold text-2xl w-[268px] text-center">
                 Get Started with Koinx for Free
