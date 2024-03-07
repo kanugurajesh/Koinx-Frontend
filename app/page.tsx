@@ -547,7 +547,7 @@ export default function Home() {
         <div className=" flex flex-col gap-5">
           <h1 className="font-semibold text-2xl">You May Also Like</h1>
           <div>
-            <div className="flex w-[100%] gap-2 overflow-x-scroll" style={{scrollbarWidth:"none"}}>
+            <div className="flex w-[100%] gap-2 overflow-x-scroll overflow-y-hidden" style={{scrollbarWidth:"none"}}>
               {/* @ts-ignore */}
               {likeCoinsList && likeCoinsList.map((obj) => {
                 return (
@@ -577,7 +577,7 @@ export default function Home() {
         <div className=" flex flex-col gap-5">
           <h1 className="font-semibold text-2xl">Trending Coins</h1>
           <div>
-            <div className="flex w-[100%] gap-2 overflow-x-scroll" style={{scrollbarWidth:"none"}}>
+            <div className="flex w-[100%] gap-2 overflow-x-scroll overflow-y-hidden" style={{scrollbarWidth:"none"}}>
               {/* @ts-ignore */}
               {likeCoinsList && likeCoinsList.map((obj) => {
                 return (
