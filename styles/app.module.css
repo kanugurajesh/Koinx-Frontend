@@ -73,6 +73,11 @@
     width: 930px;
 }
 
+.teamnote {
+    display: flex;
+    align-items: center;
+}
+
 
 @media (max-width:800px) {
     .list {
