@@ -490,8 +490,8 @@ export default function Home() {
             <div className={`bg-[#E8F4FD] ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
               <div className="flex flex-col w-[60%] justify-between items-center">
                 <Image src="/person.svg" alt="" width={100} height={100} />
-                <p className="font-semibold text-lg mt-1">John Smith</p>
-                <p className="font-semibold text-sm text-[#64748B]">Designation here</p>
+                <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
+                <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
               </div>
               <div>
                 <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
@@ -500,8 +500,8 @@ export default function Home() {
             <div className={`bg-[#E8F4FD] ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
               <div className="flex flex-col w-[60%] justify-between items-center">
                 <Image src="/person.svg" alt="" width={100} height={100} />
-                <p className="font-semibold text-lg mt-1">John Smith</p>
-                <p className="font-semibold text-sm text-[#64748B]">Designation here</p>
+                <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
+                <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
               </div>
               <div>
                 <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
@@ -510,8 +510,8 @@ export default function Home() {
             <div className={`bg-[#E8F4FD] ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
               <div className="flex flex-col w-[60%] justify-between items-center">
                 <Image src="/person.svg" alt="" width={100} height={100} />
-                <p className="font-semibold text-lg mt-1">John Smith</p>
-                <p className="font-semibold text-sm text-[#64748B]">Designation here</p>
+                <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
+                <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
               </div>
               <div>
                 <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
