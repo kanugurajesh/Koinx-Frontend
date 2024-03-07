@@ -157,7 +157,7 @@
 
 @media (max-width:1100px) {
     .leftpanelchart {
-        width: 950px;
+        width: calc(100vw - 120px);
     }
 
     .leftpanellist {
@@ -167,5 +167,17 @@
 
     .rightpanel {
         display: none;
+    }
+}
+
+@media (max-width:750px) {
+    .leftpanellist {
+        width: calc(100vw - 80px);
+        overflow-x: scroll;
+    }
+
+    .leftpanellist li {
+        width: 400px;
+        text-wrap: nowrap;
     }
 }
