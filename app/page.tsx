@@ -187,7 +187,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-8 mb-5">
-              <ul className="flex gap-10 border-b-2 border-[#DEDFE2] pb-2 font-semibold">
+              <ul className={`flex ${styles.leftpanellist} border-b-2 border-[#DEDFE2] pb-2 font-semibold`}>
                 <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
                   Overview
                 </li>
@@ -213,7 +213,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col gap-5">
-            <div className="bg-[#0052FE] w-[427px] rounded-md flex flex-col gap-7 justify-center items-center text-white p-10">
+            <div className={`bg-[#0052FE] ${styles.rightpanelnote} rounded-md flex flex-col gap-7 justify-center items-center text-white p-10`}>
               <h1 className="font-bold text-2xl w-[268px] text-center">
                 Get Started with Koinx for Free
               </h1>
@@ -229,7 +229,7 @@ export default function Home() {
                 Get Started for Free 🡪
               </Link>
             </div>
-            <div className="w-[427px] h-[225px] bg-white rounded-md p-5">
+            <div className={`${styles.rightpanelnote} h-[225px] bg-white rounded-md p-5`}>
               <h1 className="font-semibold text-xl mb-6">
                 Trending Coins (24h)
               </h1>
