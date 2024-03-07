@@ -57,6 +57,18 @@
     border-radius: 10px;
 }
 
+.green {
+    width: calc(60%);
+}
+
+.grey {
+    width: calc(20%);
+}
+
+.red {
+    width: calc(40%);
+}
+
 @media (max-width:800px) {
     .list {
         font-size: 14px;

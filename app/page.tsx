@@ -392,15 +392,25 @@ export default function Home() {
               <p className="text-[#44475B] font-medium">Analyst Estimates</p>
               <Image src="/question.svg" alt="question" width={20} height={20} className="cursor-pointer" />
             </div>
-            <div>
-              <div className="w-[116.86px] h-[120px] bg-[#EBF9F4] flex justify-center items-center" style={{borderRadius:'50%'}}>
+            <div className="flex gap-6 items-center w-[100%]">
+              <div className="w-[140.86px] h-[120px] bg-[#EBF9F4] flex justify-center items-center" style={{borderRadius:'50%'}}>
                 <h1 className="text-[#0FBA83] text-3xl font-semibold flex items-center">76 <span className="text-lg">%</span></h1>
               </div>
-              <div>
-                <div>
-                  <p></p>
-                  <span></span>
-                  <p></p>
+              <div className="flex flex-col gap-2  w-[100%] text-[#7C7E8C]">
+                <div className="flex gap-2 items-center w-[100%]">
+                  <p>Buy</p>
+                  <span className={`${styles.green} bg-[#00B386] h-[10px] rounded-sm`}></span>
+                  <p>76%</p>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <p>Hold</p>
+                  <span className={`${styles.grey} bg-[#C7C8CE] h-[10px] rounded-sm`}></span>
+                  <p>8%</p>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <p>Sell</p>
+                  <span className={`${styles.red} bg-[#F7324C] h-[10px] rounded-sm`}></span>
+                  <p>16%</p>
                 </div>
               </div>
             </div>
