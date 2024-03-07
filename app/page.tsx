@@ -416,7 +416,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.section2} ${styles.section4} bg-white rounded-md mt-3 p-6 mt-3 flex flex-col gap-5`}>
+        <section className={`${styles.section5} ${styles.section4} bg-white rounded-md mt-3 p-6 mt-3 flex flex-col gap-5`}>
           <h1 className="font-semibold text-2xl">About Bitcoin</h1>
           <div className="flex flex-col gap-3 border-b-[2px] pb-4">
             <h2 className="font-semibold text-lg">What is Bitcoin?</h2>
