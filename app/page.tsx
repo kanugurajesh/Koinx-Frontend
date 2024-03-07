@@ -239,18 +239,19 @@ export default function Home() {
                   trendingCoinsList.map((obj) => {
                     return (
                       <div className="flex items-center justify-between" key={v4()}>
-                        <div className="flex font-semibold items-center gap-2">
+                        <div className="flex font-semibold items-center gap-2" key={v4()}>
                           <Image
                             src={obj.thumb}
                             alt="data"
                             width={30}
                             height={30}
                             style={{borderRadius:'50%'}}
+                            key={v4()}
                           />
-                          <p>{obj.name}</p>
+                          <p key={v4()}>{obj.name}</p>
                         </div>
-                        <div>
-                          <span className="flex gap-1 items-center text-[#14B079] bg-[#EBF9F4] w-[84px] h-[28px] justify-center rounded-md">
+                        <div key={v4()}>
+                          <span className="flex gap-1 items-center text-[#14B079] bg-[#EBF9F4] w-[84px] h-[28px] justify-center rounded-md" key={v4()}>
                           <Image
                             src="/arrowup.svg"
                             alt=""
@@ -261,8 +262,8 @@ export default function Home() {
                           {obj.price_change.toFixed(2)}
                           %
                         </span>
-                        </div>
                       </div>
+                    </div>
                     );
                   })}
               </div>
