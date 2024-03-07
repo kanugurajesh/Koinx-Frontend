@@ -50,7 +50,7 @@ export default function Home() {
         .then((res) => res.json())
         .then((json) => {
           setTrendingCoins(json.coins);
-          console.log(json.coins)
+          console.log(json.coins + "coins")
         })
         .catch((err) => {
           toast.error("Error fetching trending coins");
