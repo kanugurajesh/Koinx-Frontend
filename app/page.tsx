@@ -226,18 +226,18 @@ export default function Home() {
                 Get Started for Free 🡪
               </Link>
             </div>
-            <div className="w-[427px] h-[225px] bg-white rounded-md">
-              <h1 className="font-semibold text-2xl p-5">
+            <div className="w-[427px] h-[225px] bg-white rounded-md p-5">
+              <h1 className="font-semibold text-xl mb-6">
                 Trending Coins (24h)
               </h1>
-              <div>
+              <div className="flex flex-col gap-5">
                 {/* @ts-ignore */}
                 {trendingCoinsList &&
                 // @ts-ignore
                   trendingCoinsList.map((obj) => {
                     return (
-                      <div>
-                        <div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex font-semibold items-center gap-2">
                           <Image
                             src={obj.thumb}
                             alt="data"
@@ -246,7 +246,19 @@ export default function Home() {
                           />
                           <p>{obj.name}</p>
                         </div>
-                        <div></div>
+                        <div>
+                          <span className="flex gap-1 items-center text-[#14B079] bg-[#EBF9F4] w-[84px] h-[28px] justify-center rounded-md">
+                          <Image
+                            src="/arrowup.svg"
+                            alt=""
+                            width={10}
+                            height={10}
+                          />
+                          {/* @ts-ignore */}
+                          {obj.price_change.toFixed(2)}
+                          %
+                        </span>
+                        </div>
                       </div>
                     );
                   })}
