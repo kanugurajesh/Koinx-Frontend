@@ -416,7 +416,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.section5} ${styles.section4} bg-white rounded-md mt-3 p-6 mt-3 flex flex-col gap-5`}>
+        <section className={`${styles.section4} bg-white rounded-md mt-3 p-6 flex flex-col gap-5`}>
           <h1 className="font-semibold text-2xl">About Bitcoin</h1>
           <div className="flex flex-col gap-3 border-b-[2px] pb-4">
             <h2 className="font-semibold text-lg">What is Bitcoin?</h2>
@@ -462,6 +462,26 @@ export default function Home() {
           <div>
             <p className="text-[#3E424A] font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, tempore minus. Corrupti cupiditate, eaque voluptatibus excepturi, ducimus incidunt repellat quis vitae sint cum inventore deserunt nesciunt aliquid, numquam at voluptatem. Ad eveniet voluptates repudiandae nihil aut incidunt? Eius, earum ipsam.</p>
           </div>
+        </section>
+        <section className={`${styles.section4} bg-white rounded-md p-6 mt-3 flex flex-col gap-6`}>
+          <h1 className="text-2xl font-semibold">Tokenomics</h1>
+          <div className="flex flex-col gap-4">
+            <h2 className="text-xl font-semibold">Initial Distribution</h2>
+            <div className="flex items-center gap-5 justify-start">
+              <Image src="/chart.svg" alt="chart" width={150} height={150} />
+              <div className="flex flex-col gap-3 items-start">
+                <div className="flex gap-2 items-center">
+                  <span className="w-[10px] h-[10px] bg-[#0082FF]" style={{borderRadius:'50%'}}></span>
+                  <p>Crowdsale investors: 80%</p>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <span className="w-[10px] h-[10px] bg-[#FAA002]" style={{borderRadius:'50%'}}></span>
+                  <p>Foundation: 20%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className="font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, aperiam! Ab id atque iure qui dolorem optio nemo labore et omnis temporibus fugit harum error impedit tempore neque unde in possimus, modi, cum doloribus illo voluptatibus ex. Fuga beatae modi dolores eius deserunt molestiae, quos reiciendis dignissimos dolorum dolor harum quibusdam nisi esse quis, ut consectetur eveniet aliquid accusamus velit!</p>
         </section>
       </main>
     </div>
