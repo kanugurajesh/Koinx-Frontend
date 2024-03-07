@@ -306,7 +306,7 @@ export default function Home() {
           <div className="p-5 flex flex-col gap-8 w-[100%]">
             <div className="flex gap-2">
               <h1 className="font-semibold text-lg text-[#44475B]">Fundamentals</h1>
-              <Image src="/question.svg" alt="question" width={20} height={20} />
+              <Image src="/question.svg" alt="question" width={20} height={20} className="cursor-pointer" />
             </div>
             <div className="flex justify-between">
               <div className="w-[45%] flex flex-col gap-4">
@@ -351,6 +351,56 @@ export default function Home() {
                 <div className="flex justify-between border-b-2 border-[#DEE2E6] pb-5">
                   <p className="text-[#768396] text-[14px]">Bitcoin Prize</p>
                   <p className="font-medium text-[13px]">$16,815.46</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className={`${styles.section2} ${styles.section3} bg-white rounded-md flex flex-col gap-6 p-6` }>
+          <h1 className="font-semibold text-2xl">Sentiment</h1>
+          <div className="flex flex-col gap-5 w-[100%]">
+            <div className="flex gap-2">
+              <p className="text-[#44475B] font-medium">Key Events</p>
+              <Image src="/question.svg" alt="question" width={20} height={20} className="cursor-pointer" />
+            </div>
+            <div className="flex gap-2 overflow-x-scroll w-[100%] overflow-y-hidden" style={{scrollbarWidth:'none'}}>
+              <div className={`${styles.section3note} flex items-start gap-3 bg-[#E8F4FD] p-5 rounded-lg`}>
+                <Image src="/news.svg" alt="news" width={50} height={50} />
+                <div className={`${styles.section3note}`}>
+                  <p className="font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione</p>
+                  <p className="font-mediumj text-[#768396]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dicta porro, sit culpa nesciunt fugiat quasi eos velit minus fugit cum beatae numquam dolorem aspernatur, quaerat quo voluptatibus ducimus mollitia</p>
+                </div>
+              </div>
+              <div className={`${styles.section3note} flex items-start gap-3 bg-[#EBF9F4] p-5 rounded-lg`}>
+                <Image src="/growth.svg" alt="news" width={50} height={50} />
+                <div className={`w-[456px]`}>
+                  <p className="font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione</p>
+                  <p className="font-mediumj text-[#768396]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dicta porro, sit culpa nesciunt fugiat quasi eos velit minus fugit cum beatae numquam dolorem aspernatur, quaerat quo voluptatibus ducimus mollitia</p>
+                </div>
+              </div>
+              <div className={`${styles.section3note} flex items-start gap-3 bg-[#E8F4FD] p-5 rounded-lg`}>
+                <Image src="/news.svg" alt="news" width={50} height={50} />
+                <div className={`${styles.section3note}`}>
+                  <p className="font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione</p>
+                  <p className="font-mediumj text-[#768396]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dicta porro, sit culpa nesciunt fugiat quasi eos velit minus fugit cum beatae numquam dolorem aspernatur, quaerat quo voluptatibus ducimus mollitia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-5">
+            <div className="flex gap-2 mt-2">
+              <p className="text-[#44475B] font-medium">Analyst Estimates</p>
+              <Image src="/question.svg" alt="question" width={20} height={20} className="cursor-pointer" />
+            </div>
+            <div>
+              <div className="w-[116.86px] h-[120px] bg-[#EBF9F4] flex justify-center items-center" style={{borderRadius:'50%'}}>
+                <h1 className="text-[#0FBA83] text-3xl font-semibold flex items-center">76 <span className="text-lg">%</span></h1>
+              </div>
+              <div>
+                <div>
+                  <p></p>
+                  <span></span>
+                  <p></p>
                 </div>
               </div>
             </div>

@@ -41,6 +41,16 @@
     height: 632px;
 }
 
+.section3 {
+    height: 556px;
+}
+
+.section3note {
+    width: 456px;
+    height: 200px;
+    scrollbar-width: none;
+}
+
 .colorline {
     width: calc(100% - 5px);
     height: 6px;
