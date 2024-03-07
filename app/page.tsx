@@ -113,7 +113,7 @@ export default function Home() {
   },[trendingCoins])
 
   return (
-    <div>
+    <div className="relative">
       <Toaster />
       <nav
         className={`flex justify-between items-center border-[#DEDFE2] border-bottom border-b-2 ${styles.navbar}`}
@@ -462,20 +462,20 @@ export default function Home() {
           <div className="border-b-[2px] pb-4 flex flex-col gap-4">
             <h1 className="text-2xl font-semibold">Already Holding Bitcoin?</h1>
             <div className={`flex gap-4 ${styles.cards}`}>
-              <div className="flex gap-5 items-center bg-gradient-to-r from-[#79F1A4] to-[#1F0EAD] w-[338px] h-[151px] p-4 rounded-md justify-center">
+              <div className={`flex gap-5 items-center bg-gradient-to-r from-[#79F1A4] to-[#1F0EAD] w-[338px] h-[151px] p-4 rounded-md justify-center ${styles.card}`}>
                 <Image src="/trade1.svg" alt="trade" width={120} height={120} />
                 <div className="flex flex-col gap-3">
                   <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
-                  <Link href="/" className="bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold">
+                  <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold ${styles.change}`}>
                     Check Now 🡪
                   </Link>
                 </div>
               </div>
-              <div className="flex gap-5 items-center bg-gradient-to-r from-[#FF9865] to-[#EF3031] w-[338px] h-[151px] p-4 rounded-md justify-center">
+              <div className={`flex gap-5 items-center bg-gradient-to-r from-[#FF9865] to-[#EF3031] w-[338px] h-[151px] p-4 rounded-md justify-center ${styles.card}`}>
                 <Image src="/trade2.svg" alt="trade" width={120} height={120} />
                 <div className="flex flex-col gap-3">
                   <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
-                  <Link href="/" className="bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold" >
+                  <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold ${styles.change}`}>
                     Check Now 🡪
                   </Link>
                 </div>
