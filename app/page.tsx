@@ -483,6 +483,22 @@ export default function Home() {
           </div>
           <p className="font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, aperiam! Ab id atque iure qui dolorem optio nemo labore et omnis temporibus fugit harum error impedit tempore neque unde in possimus, modi, cum doloribus illo voluptatibus ex. Fuga beatae modi dolores eius deserunt molestiae, quos reiciendis dignissimos dolorum dolor harum quibusdam nisi esse quis, ut consectetur eveniet aliquid accusamus velit!</p>
         </section>
+        <section className={`${styles.section4} bg-white rounded-md p-6 mt-3 flex flex-col gap-6`}>
+          <h1 className="text-2xl font-semibold">Team</h1>
+          <p className="font-medium text-[#3E424A]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eligendi quibusdam vel, assumenda perspiciatis perferendis exercitationem voluptate expedita quo ipsa.</p>
+          <div>
+            <div className="bg-[#E8F4FD]">
+              <div>
+                <Image src="/person.svg" alt="" width={100} height={100} />
+                <p className="font-semibold text-lg">John Smith</p>
+                <p className="font-semibold text-md text-[#64748B]">Designation here</p>
+              </div>
+              <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
