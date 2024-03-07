@@ -45,6 +45,7 @@ export default function Home() {
     const url = "https://api.coingecko.com/api/v3/search/trending";
     const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string;
     const options = { method: "GET", headers: { "x-cg-pro-api-key": API_KEY } };
+    console.log(API_KEY)
     const fetchData = async () => {
       await fetch(url, options)
         .then((res) => res.json())
