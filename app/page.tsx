@@ -7,7 +7,6 @@ import toast, { Toaster } from "react-hot-toast";
 import Chart from "@/components/TradingChat";
 import Link from "next/link";
 import {v4} from "uuid";
-// import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState();
@@ -51,6 +50,7 @@ export default function Home() {
         .then((res) => res.json())
         .then((json) => {
           setTrendingCoins(json.coins);
+          console.log(json.coins)
         })
         .catch((err) => {
           toast.error("Error fetching trending coins");
