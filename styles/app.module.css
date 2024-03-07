@@ -181,3 +181,9 @@
         text-wrap: nowrap;
     }
 }
+
+@media (max-width:600px) {
+    .leftpanelchart {
+        height: 391px;
+    }
+}
