@@ -45,6 +45,7 @@ export default function Home() {
       await fetch(url, options)
         .then(res => res.json())
         .then(json => {
+          console.log(json)
           setTrendingCoins(json.coins)
           console.log(json.coins)
         })
@@ -141,7 +142,17 @@ export default function Home() {
                 <Chart />
               </div>
             </div>
-            <div></div>
+            <div className="mt-8 mb-5">
+              <ul className="flex gap-10 border-b-2 border-[#DEDFE2] pb-2 font-semibold">
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Overview</li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Fundamentals</li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">News Insights</li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Sentiments</li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Team</li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Technicals</li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Tokenomics</li>
+              </ul>
+            </div>
           </div>
           <div className="flex flex-col gap-5">
             <div className="bg-[#0052FE] w-[426px] rounded-md flex flex-col gap-7 justify-center items-center text-white p-10">
@@ -153,7 +164,13 @@ export default function Home() {
             <div className="w-[427px] h-[225px] bg-white rounded-md">
               <h1 className="font-semibold text-2xl p-5">Trending Coins (24h)</h1>
               <div>
-
+                <div>
+                  <div>
+                    {/* @ts-ignore */}
+                    {/* <Image src={trendingCoins[0].item.thumb} alt="" width={10} height={10} /> */}
+                  </div>
+                  <div></div>
+                </div>
               </div>
             </div>
           </div>
