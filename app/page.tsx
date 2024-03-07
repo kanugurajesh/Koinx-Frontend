@@ -6,6 +6,8 @@ import styles from "@/styles/app.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Chart from "@/components/TradingChat";
 import Link from "next/link";
+import {v4} from "uuid";
+// import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState();
@@ -231,7 +233,7 @@ export default function Home() {
                 // @ts-ignore
                   trendingCoinsList.map((obj) => {
                     return (
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between" key={v4()}>
                         <div className="flex font-semibold items-center gap-2">
                           <Image
                             src={obj.thumb}
