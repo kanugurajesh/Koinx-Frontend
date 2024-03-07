@@ -277,14 +277,14 @@ export default function Home() {
             <div className="w-[100%] flex flex-col gap-10">
               <div className="flex justify-between items-center w-[100%] gap-10">
                 <div className="flex flex-col gap-2 text-[#44475B]">
-                  <p className="text-[13.78px] text-nowrap">Today's Low</p>
+                  <p className="text-[13.78px] text-nowrap">Today&apos;s Low</p>
                   <p className="text=[#44475B] text-[15.63px] font-semibold">46,932.22</p>
                 </div>
                 <div className="w-[100%]">
                   <div className={`bg-gradient-to-r from-[#FF4949] via-[#FF4E11] via-[#FC870A] via-[#FFAF11] via-[#C2CB21] to-[#11EB68] h-[10px] ${styles.colorline}`}></div>
                 </div>
                 <div className="flex flex-col gap-2 text-[#44475B]">
-                  <p className="text-[13.78px] text-nowrap">Today's High</p>
+                  <p className="text-[13.78px] text-nowrap">Today&apos;s High</p>
                   <p className="text=[#44475B] text-[15.63px] font-semibold">49,343.83</p>
                 </div>
               </div>
