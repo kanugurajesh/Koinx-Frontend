@@ -6,7 +6,6 @@ import styles from "@/styles/app.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Chart from "@/components/TradingChat";
 import Link from "next/link";
-import { randomUUID } from "crypto";
 
 export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState();
@@ -82,10 +81,6 @@ export default function Home() {
     setTrendingCoinsList(tempList);
   }, [trendingCoins]);
 
-  useEffect(() => {
-    console.log(trendingCoinsList);
-  }, [trendingCoinsList]);
-
   return (
     <div>
       <Toaster />
@@ -127,7 +122,7 @@ export default function Home() {
         <p className="text-sm mt-4 mb-2">
           Cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
         </p>
-        <section className={`${styles.section1}`}>
+        <section className={`${styles.section1} flex justify-around`}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
             <div className="flex flex-col p-6 bg-white rounded-md gap-6">
               <div className="flex flex-col gap-8">
@@ -243,6 +238,7 @@ export default function Home() {
                             alt="data"
                             width={30}
                             height={30}
+                            style={{borderRadius:'50%'}}
                           />
                           <p>{obj.name}</p>
                         </div>
