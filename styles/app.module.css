@@ -69,6 +69,10 @@
     width: calc(40%);
 }
 
+.section4 {
+    height: 995px;
+}
+
 @media (max-width:800px) {
     .list {
         font-size: 14px;
@@ -245,5 +249,12 @@
 @media (max-width:600px) {
     .leftpanelchart {
         height: 391px;
+    }
+}
+
+@media (max-width:750px) {
+    .cards {
+        display: flex;
+        flex-direction: column;
     }
 }

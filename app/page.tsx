@@ -356,7 +356,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.section2} ${styles.section3} bg-white rounded-md flex flex-col gap-6 p-6` }>
+        <section className={`${styles.section2} ${styles.section3} bg-white rounded-md flex flex-col gap-6 p-6 mt-3` }>
           <h1 className="font-semibold text-2xl">Sentiment</h1>
           <div className="flex flex-col gap-5 w-[100%]">
             <div className="flex gap-2">
@@ -414,6 +414,53 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+        <section className={`${styles.section2} ${styles.section4} bg-white rounded-md mt-3 p-6 mt-3 flex flex-col gap-5`}>
+          <h1 className="font-semibold text-2xl">About Bitcoin</h1>
+          <div className="flex flex-col gap-3 border-b-[2px] pb-4">
+            <h2 className="font-semibold text-lg">What is Bitcoin?</h2>
+            <p className="font-medium text-[#3E424A]">Bitcoin&apos;s price today is US$16,951.82, with a 24-hour trading volume of $19.14 B. BTC is +0.36% in the last 24 hours. It is currently -7.70% from its 7-day all-time high of $18,366.66, and 3.40% from its 7-day all-time low of $16,394.75. BTC has a circulating supply of 19.24 M BTC and a max supply of 21 M BTC.</p>
+          </div>
+          <div className="border-b-[2px] pb-4">
+            <h2 className="font-semibold text-lg">Lorem ipsum dolor sit amet.</h2>
+            <div className="flex flex-col gap-8 mt-2 font-medium text-[#3E424A]">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam cupiditate molestias dolorum culpa consectetur veniam quas fugit, deserunt suscipit! Magnam quod cupiditate a atque officiis eligendi ab aliquid sint! Nihil, necessitatibus impedit? Voluptate vitae commodi dolores provident accusamus obcaecati? Quos unde mollitia obcaecati earum, at nam omnis placeat rem vitae.
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam cupiditate molestias dolorum culpa consectetur veniam quas fugit, deserunt suscipit! Magnam quod cupiditate a atque officiis eligendi ab aliquid sint! Nihil, necessitatibus impedit? Voluptate vitae commodi dolores provident accusamus obcaecati? Quos unde mollitia obcaecati earum, at nam omnis placeat rem vitae.
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam cupiditate molestias dolorum culpa consectetur veniam quas fugit, deserunt suscipit! Magnam quod cupiditate a atque officiis eligendi ab aliquid sint! Nihil, necessitatibus impedit? Voluptate vitae commodi dolores provident accusamus obcaecati? Quos unde mollitia obcaecati earum, at nam omnis placeat rem vitae.
+              </p>
+            </div>
+          </div>
+          <div className="border-b-[2px] pb-4 flex flex-col gap-4">
+            <h1 className="text-2xl font-semibold">Already Holding Bitcoin?</h1>
+            <div className={`flex gap-4 ${styles.cards}`}>
+              <div className="flex gap-5 items-center bg-gradient-to-r from-[#79F1A4] to-[#1F0EAD] w-[338px] h-[151px] p-4 rounded-md justify-center">
+                <Image src="/trade1.svg" alt="trade" width={120} height={120} />
+                <div className="flex flex-col gap-3">
+                  <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
+                  <Link href="/" className="bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold">
+                    Check Now 🡪
+                  </Link>
+                </div>
+              </div>
+              <div className="flex gap-5 items-center bg-gradient-to-r from-[#FF9865] to-[#EF3031] w-[338px] h-[151px] p-4 rounded-md justify-center">
+                <Image src="/trade2.svg" alt="trade" width={120} height={120} />
+                <div className="flex flex-col gap-3">
+                  <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
+                  <Link href="/" className="bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold" >
+                    Check Now 🡪
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="text-[#3E424A] font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, tempore minus. Corrupti cupiditate, eaque voluptatibus excepturi, ducimus incidunt repellat quis vitae sint cum inventore deserunt nesciunt aliquid, numquam at voluptatem. Ad eveniet voluptates repudiandae nihil aut incidunt? Eius, earum ipsam.</p>
           </div>
         </section>
       </main>
