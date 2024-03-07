@@ -277,6 +277,14 @@
     }
 }
 
+@media (max-width:650px) {
+    .teamnote {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
 @media (max-width:750px) {
     .cards {
         display: flex;
