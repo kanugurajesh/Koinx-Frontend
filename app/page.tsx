@@ -6,10 +6,13 @@ import styles from "@/styles/app.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Chart from "@/components/TradingChat";
 import Link from "next/link";
+import { randomUUID } from "crypto";
 
 export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState();
   const [trendingCoins, setTrendingCoins] = useState();
+  const [trendingCoinsList, setTrendingCoinsList] = useState();
+  // @ts-ignore
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,24 +41,50 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const url = 'https://api.coingecko.com/api/v3/search/trending';
-    const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string
-    const options = {method: 'GET', headers: {'x-cg-pro-api-key': API_KEY }};
+    const url = "https://api.coingecko.com/api/v3/search/trending";
+    const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string;
+    const options = { method: "GET", headers: { "x-cg-pro-api-key": API_KEY } };
     const fetchData = async () => {
       await fetch(url, options)
-        .then(res => res.json())
-        .then(json => {
-          console.log(json)
-          setTrendingCoins(json.coins)
-          console.log(json.coins)
+        .then((res) => res.json())
+        .then((json) => {
+          setTrendingCoins(json.coins);
         })
-        .catch(err => {
-          toast.error("Error fetching trending coins")
-          console.error('error:' + err)
+        .catch((err) => {
+          toast.error("Error fetching trending coins");
+          console.error("error:" + err);
         });
-    }
+    };
     fetchData();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    let count = 0;
+    const tempList = [];
+    // @ts-ignore
+    for (let key in trendingCoins) {
+      const firstValue = trendingCoins[key];
+      const data = {
+        // @ts-ignore
+        name: firstValue.item.name,
+        // @ts-ignore
+        thumb: firstValue.item.thumb,
+        // @ts-ignore
+        price_change: firstValue.item.data.price_change_percentage_24h.usd,
+      };
+      tempList.push(data);
+      count++;
+      if (count > 2) {
+        break;
+      }
+    }
+    // @ts-ignore
+    setTrendingCoinsList(tempList);
+  }, [trendingCoins]);
+
+  useEffect(() => {
+    console.log(trendingCoinsList);
+  }, [trendingCoinsList]);
 
   return (
     <div>
@@ -73,9 +102,15 @@ export default function Home() {
           />
         </Link>
         <ul className={`flex gap-6 items-center ${styles.list}`}>
-          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Crypto Taxes</li>
-          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Free Tools</li>
-          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">Resource Center</li>
+          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">
+            Crypto Taxes
+          </li>
+          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">
+            Free Tools
+          </li>
+          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">
+            Resource Center
+          </li>
           <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer mb-1">
             Get Started
           </li>
@@ -118,22 +153,28 @@ export default function Home() {
                 <div className="flex flex-col gap-1">
                   <div className="flex gap-8 items-center">
                     <p className="text-2xl font-bold">
-                      ${" "}
-                      {/* @ts-ignore */}
-                      {bitcoinPrice && Intl.NumberFormat("en-IN").format(bitcoinPrice.usd)}
+                      $ {/* @ts-ignore */}
+                      {bitcoinPrice &&
+                      // @ts-ignore
+                        Intl.NumberFormat("en-IN").format(bitcoinPrice.usd)}
                     </p>
                     <div className="flex gap-2 items-center">
                       <span className="flex gap-1 items-center text-[#14B079] bg-[#EBF9F4] w-[84px] h-[28px] justify-center rounded-md">
-                        <Image src="/arrowup.svg" alt="" width={10} height={10} />
-                      {/* @ts-ignore */}
-                        {bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}%
+                        <Image
+                          src="/arrowup.svg"
+                          alt=""
+                          width={10}
+                          height={10}
+                        />
+                        {/* @ts-ignore */}
+                        {bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}
+                        %
                       </span>
                       <p className="text-[#768396] text-sm">(24H)</p>
                     </div>
                   </div>
                   <p className="text-md font-semibold">
-                    ₹{" "}
-                    {/* @ts-ignore */}
+                    ₹ {/* @ts-ignore */}
                     {bitcoinPrice && Intl.NumberFormat("en-US").format(bitcoinPrice.inr)}
                   </p>
                 </div>
@@ -144,33 +185,71 @@ export default function Home() {
             </div>
             <div className="mt-8 mb-5">
               <ul className="flex gap-10 border-b-2 border-[#DEDFE2] pb-2 font-semibold">
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Overview</li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Fundamentals</li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">News Insights</li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Sentiments</li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Team</li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Technicals</li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF]">Tokenomics</li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
+                  Overview
+                </li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
+                  Fundamentals
+                </li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
+                  News Insights
+                </li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
+                  Sentiments
+                </li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
+                  Team
+                </li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
+                  Technicals
+                </li>
+                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
+                  Tokenomics
+                </li>
               </ul>
             </div>
           </div>
           <div className="flex flex-col gap-5">
             <div className="bg-[#0052FE] w-[426px] rounded-md flex flex-col gap-7 justify-center items-center text-white p-10">
-              <h1 className="font-bold text-2xl w-[268px] text-center">Get Started with Koinx for Free</h1>
-              <p className="text-center w-[327px]">With our range of features that you can equip for free, KoinX allows you to be more educated and aware of your tax reports.</p>
+              <h1 className="font-bold text-2xl w-[268px] text-center">
+                Get Started with Koinx for Free
+              </h1>
+              <p className="text-center w-[327px]">
+                With our range of features that you can equip for free, KoinX
+                allows you to be more educated and aware of your tax reports.
+              </p>
               <Image src="/mobile.svg" alt="mobile" width={200} height={200} />
-              <Link href="/" className="w-[237px] h-[48px] text-black bg-white flex justify-center items-center font-bold rounded-md">Get Started for Free 🡪</Link>
+              <Link
+                href="/"
+                className="w-[237px] h-[48px] text-black bg-white flex justify-center items-center font-bold rounded-md"
+              >
+                Get Started for Free 🡪
+              </Link>
             </div>
             <div className="w-[427px] h-[225px] bg-white rounded-md">
-              <h1 className="font-semibold text-2xl p-5">Trending Coins (24h)</h1>
+              <h1 className="font-semibold text-2xl p-5">
+                Trending Coins (24h)
+              </h1>
               <div>
-                <div>
-                  <div>
-                    {/* @ts-ignore */}
-                    {/* <Image src={trendingCoins[0].item.thumb} alt="" width={10} height={10} /> */}
-                  </div>
-                  <div></div>
-                </div>
+                {/* @ts-ignore */}
+                {trendingCoinsList &&
+                // @ts-ignore
+                  trendingCoinsList.map((obj) => {
+                    return (
+                      <div>
+                        <div>
+                          <Image
+                            src={obj.thumb}
+                            alt="data"
+                            width={30}
+                            height={30}
+                          />
+                          <p>{obj.name}</p>
+                        </div>
+                        <div></div>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </div>
