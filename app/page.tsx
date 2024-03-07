@@ -12,6 +12,7 @@ export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState();
   const [trendingCoins, setTrendingCoins] = useState();
   const [trendingCoinsList, setTrendingCoinsList] = useState();
+  const [likeCoinsList, setlikeCoinsList] = useState();
   // @ts-ignore
 
   useEffect(() => {
@@ -44,7 +45,6 @@ export default function Home() {
     const url = "https://api.coingecko.com/api/v3/search/trending";
     const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string;
     const options = { method: "GET", headers: { "x-cg-demo-api-key": API_KEY } };
-    console.log(API_KEY)
     const fetchData = async () => {
       await fetch(url, options)
         .then((res) => res.json())
@@ -88,6 +88,10 @@ export default function Home() {
   useEffect(() => {
     console.log(trendingCoinsList)
   },[trendingCoinsList])
+
+  useEffect(() => {
+
+  },[trendingCoins])
 
   return (
     <div>
@@ -520,6 +524,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <footer>
+        
+      </footer>
     </div>
   );
 }
