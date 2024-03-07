@@ -205,7 +205,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col gap-5">
-            <div className="bg-[#0052FE] w-[426px] rounded-md flex flex-col gap-7 justify-center items-center text-white p-10">
+            <div className="bg-[#0052FE] w-[427px] rounded-md flex flex-col gap-7 justify-center items-center text-white p-10">
               <h1 className="font-bold text-2xl w-[268px] text-center">
                 Get Started with Koinx for Free
               </h1>
