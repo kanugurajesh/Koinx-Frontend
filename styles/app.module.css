@@ -36,6 +36,17 @@
     gap: 22px;
 }
 
+.section2 {
+    width: 930px;
+    height: 632px;
+}
+
+.colorline {
+    width: calc(100% - 5px);
+    height: 6px;
+    border-radius: 10px;
+}
+
 @media (max-width:800px) {
     .list {
         font-size: 14px;
