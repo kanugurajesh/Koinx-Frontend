@@ -83,6 +83,10 @@ export default function Home() {
     setTrendingCoinsList(tempList);
   }, [trendingCoins]);
 
+  useEffect(() => {
+    console.log(trendingCoinsList)
+  },[trendingCoinsList])
+
   return (
     <div>
       <Toaster />
