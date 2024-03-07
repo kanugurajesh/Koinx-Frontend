@@ -90,7 +90,26 @@ export default function Home() {
   },[trendingCoinsList])
 
   useEffect(() => {
-
+    const tempList = [];
+    // @ts-ignore
+    for(let key in trendingCoins) {
+      const firstValue = trendingCoins[key];
+      const data = {
+        // @ts-ignore
+        symbol: firstValue.item.symbol,
+        // @ts-ignore
+        thumb: firstValue.item.thumb,
+        // @ts-ignore
+        price_change: firstValue.item.data.price_change_percentage_24h.usd,
+        // @ts-ignore
+        price: firstValue.item.data.price,
+        // @ts-ignore
+        sparkline: firstValue.item.sparkline
+      }
+      tempList.push(data);
+    }
+    // @ts-ignore
+    setlikeCoinsList(tempList);
   },[trendingCoins])
 
   return (
@@ -129,7 +148,7 @@ export default function Home() {
         </ul>
       </nav>
       <main
-        className={`bg-[#EFF2F5] h-full w-full ${styles.main} flex flex-col gap-2`}
+        className={`bg-[#EFF2F5] h-full w-full ${styles.main} flex flex-col gap-2 pb-8`}
       >
         <p className="text-sm mt-4 mb-2">
           Cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
@@ -524,8 +543,15 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer>
-        
+      <footer className="p-10 pt-20 pb-20">
+        <div>
+          <h1 className="font-semibold text-2xl">You May Also Like</h1>
+          <div>
+            <div>
+              
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
