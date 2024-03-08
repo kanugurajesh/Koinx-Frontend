@@ -49,9 +49,8 @@ export default function Home() {
       await fetch(url, options)
         .then((res) => res.json())
         .then((json) => {
-          console.log(json)
+          // console.log(json)
           setTrendingCoins(json.coins);
-          console.log(json.coins + "coins")
         })
         .catch((err) => {
           toast.error("Error fetching trending coins");
@@ -85,9 +84,9 @@ export default function Home() {
     setTrendingCoinsList(tempList);
   }, [trendingCoins]);
 
-  useEffect(() => {
-    console.log(trendingCoinsList)
-  },[trendingCoinsList])
+  // useEffect(() => {
+  //   console.log(trendingCoinsList)
+  // },[trendingCoinsList])
 
   useEffect(() => {
     const tempList = [];
@@ -108,6 +107,7 @@ export default function Home() {
       }
       tempList.push(data);
     }
+    console.log(tempList)
     // @ts-ignore
     setlikeCoinsList(tempList);
   },[trendingCoins])
@@ -294,7 +294,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.section2} bg-white rounded-md gap-8`}>
+        <section className={`${styles.section2} ${styles.prizes} bg-white rounded-md gap-8`}>
           <div className="p-5 flex flex-col gap-8 w-[100%]">
             <h1 className="font-semibold text-2xl">Performance</h1>
             <div className="w-[100%] flex flex-col gap-10">
@@ -596,7 +596,7 @@ export default function Home() {
                         <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ obj.price_change.toFixed(2) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{obj.price_change.toFixed(2) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
                       </div>
                       <p className="font-semibold text-xl">{obj.price}</p>
-                      <Image src={obj.sparkline} alt="sparkline" width={150} height={150} />
+                      {obj.sparkline && <Image src={obj.sparkline} alt="sparkline" width={150} height={150} /> }
                     </div>
                   </div>
                 )

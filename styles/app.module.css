@@ -38,7 +38,7 @@
 
 .section2 {
     width: 930px;
-    height: 632px;
+    /* height: 632px; */
 }
 
 .section3 {
@@ -295,22 +295,6 @@
         flex-direction: column;
     }
 }
-
-/* @media (max-width:800px) {
-    .rightpanel {
-        display: flex;
-        position: absolute;
-        bottom: -750px;
-        justify-content: center;
-        align-items: center;
-    }
-} */
-
-/* @media (max-width:450px) {
-    .card {
-        width: 320px;
-    }
-} */
 
 @media (max-width:450px) {
     .card {
