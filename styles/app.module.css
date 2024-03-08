@@ -38,7 +38,6 @@
 
 .section2 {
     width: 930px;
-    /* height: 632px; */
 }
 
 .section3 {
@@ -294,6 +293,102 @@
         display: flex;
         flex-direction: column;
     }
+}
+
+@media (max-width:1100px) {
+    .rightpanel {
+        display: flex;
+        position: absolute;
+        bottom: -550px;
+        justify-content: space-between;
+        gap: 40px;
+        flex-direction: row;
+    }
+}
+
+@media (max-width:800px) {
+    .rightpanel {
+        bottom: -800px;
+        flex-direction: column;
+        left: 21%;
+    }
+
+    .rightpanelnote {
+        width: 427px;
+    }
+    
+}
+
+@media (max-width:700px) {
+    .rightpanel {
+        left: 18%;
+    }
+}
+
+@media (max-width:600px) {
+    .rightpanel {
+        left: 15%;
+    }
+}
+
+@media (max-width:550px) {
+    .rightpanel {
+        left: 10%;
+    }
+}
+
+@media (max-width:500px) {
+    .rightpanelnote {
+        width: 400px;
+    }
+}
+
+@media (max-width:480px) {
+    .rightpanelnote {
+        left: 15%;
+        width: 380px;
+    }
+}
+
+@media (max-width:450px) {
+
+    .rightpanelnote {
+        left: 15%;
+        width: 360px;
+    }
+
+    .card {
+        width: 320px;
+    }
+}
+
+@media (max-width:440px) {
+
+    .rightpanelnote {
+        left: 13%;
+        width: 345px;
+    }
+}
+
+@media (max-width:400px) {
+
+    .rightpanelnote {
+        left: 12%;
+        width: 330px;
+    }
+
+}
+
+@media (max-width:380px) {
+
+    .rightpanel {
+        gap: 20px;
+    }
+
+    .rightpanelnote {
+        left: 12%;
+    }
+    
 }
 
 @media (max-width:450px) {
