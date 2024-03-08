@@ -142,9 +142,9 @@ export default function Home() {
           </li>
         </ul>
         <ul className={`${styles.menu}`}>
-          <li className="w-6 h-1 bg-black"></li>
-          <li className="w-6 h-1 bg-black"></li>
-          <li className="w-6 h-1 bg-black"></li>
+          <li className="w-7 h-1 bg-black"></li>
+          <li className="w-7 h-1 bg-black"></li>
+          <li className="w-7 h-1 bg-black"></li>
         </ul>
       </nav>
       <main
