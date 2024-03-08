@@ -13,7 +13,11 @@ export default function Home() {
   const [trendingCoins, setTrendingCoins] = useState();
   const [trendingCoinsList, setTrendingCoinsList] = useState();
   const [likeCoinsList, setlikeCoinsList] = useState();
-  // @ts-ignore
+  const [menuClick, setMenuClick] = useState(false);
+  
+  const handleMenuClick = () => {
+    setMenuClick(!menuClick)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -141,11 +145,13 @@ export default function Home() {
             Get Started
           </li>
         </ul>
-        <ul className={`${styles.menu}`}>
-          <li className="w-7 h-1 bg-black"></li>
-          <li className="w-7 h-1 bg-black"></li>
-          <li className="w-7 h-1 bg-black"></li>
+        <div className="transition-all duration-800 ease-in-out">
+        <ul className={`transition-all duration-800 ease-in-out  ${styles.menu} ${ menuClick ? styles.click : ''} `} onClick={() => handleMenuClick()}>
+          <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
+          <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
+          <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
         </ul>
+        </div>
       </nav>
       <main
         className={`bg-[#EFF2F5] h-full w-full ${styles.main} flex flex-col gap-2 pb-8`}
