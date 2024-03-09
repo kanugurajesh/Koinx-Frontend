@@ -117,7 +117,7 @@ export default function Home() {
   },[trendingCoins])
 
   return (
-    <div  className={`relative h-screen ${menuClick ? 'overflow-hidden':''}`}>
+    <div  className={`relative ${menuClick ? 'overflow-hidden':''}`}>
       <Toaster />
       <nav
         className={`flex justify-between items-center border-[#DEDFE2] border-bottom border-b-2 ${styles.navbar}`}
