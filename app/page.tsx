@@ -150,20 +150,6 @@ export default function Home() {
           <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
           <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
         </ul>
-        <ul className={`flex gap-6 items-center ${styles.list}`}>
-          <li>
-            Crypto Taxes
-          </li>
-          <li>
-            Free Tools
-          </li>
-          <li>
-            Resource Center
-          </li>
-          <li>
-            Get Started
-          </li>
-        </ul>
       </nav>
       <main
         className={`bg-[#EFF2F5] h-full w-full ${styles.main} flex flex-col gap-2 pb-8`}
