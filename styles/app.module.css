@@ -21,7 +21,6 @@
     display: none;
 }
 
-
 .click li:nth-of-type(3) {
     transform-origin: 10px -1px;
     transform: rotate(-50deg);
