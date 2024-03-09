@@ -117,7 +117,7 @@ export default function Home() {
   },[trendingCoins])
 
   return (
-    <div className="relative">
+    <div  className={`relative h-screen ${menuClick ? 'overflow-hidden':''}`}>
       <Toaster />
       <nav
         className={`flex justify-between items-center border-[#DEDFE2] border-bottom border-b-2 ${styles.navbar}`}
@@ -150,6 +150,22 @@ export default function Home() {
           <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
           <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
         </ul>
+        <div className={`${styles.menuList} ${menuClick ? styles.menuShow : ''} transition-all ease-in-out duration-300`}>
+          <ul className={`flex flex-col gap-8 items-center justify-center h-full`}>
+            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold">
+              Crypto Taxes
+            </li>
+            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold">
+              Free Tools
+            </li>
+            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold">
+              Resource Center
+            </li>
+            <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer mb-1 font-semibold">
+              Get Started
+            </li>
+          </ul>
+        </div>
       </nav>
       <main
         className={`bg-[#EFF2F5] h-full w-full ${styles.main} flex flex-col gap-2 pb-8`}

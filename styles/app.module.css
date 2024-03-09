@@ -12,6 +12,19 @@
     display: none;
 }
 
+.menuList {
+    position: absolute;
+    left: -100vw;
+    top: 75px;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+
+.menuShow {
+    left: 0;
+}
+
 .click li:nth-of-type(1) {
     transform-origin: 12px 5px;
     transform: rotate(50deg);
