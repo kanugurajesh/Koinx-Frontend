@@ -11,6 +11,7 @@ import { fetchBitcoinPrice, fetchTrendingCoins } from "@/lib/api";
 import { BitcoinPrice, TrendingCoinsResponse, TrendingCoinListItem, LikeCoinListItem } from "@/types";
 import { CoinSkeleton } from "@/components/Skeleton";
 import ThemeToggle from "@/components/ThemeToggle";
+import Navbar from "@/components/Navigation/Navbar";
 
 export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState<BitcoinPrice | null>(null);
@@ -65,7 +66,7 @@ export default function Home() {
         name: coin.item.name,
         thumb: coin.item.thumb,
         symbol: coin.item.symbol,
-        price_btc: coin.item.price_btc,
+        price_btc: coin.item.data?.price_change_percentage_24h?.usd ?? 0,
         market_cap_rank: coin.item.market_cap_rank
       }));
 
@@ -83,7 +84,7 @@ export default function Home() {
       .map(coin => ({
         symbol: coin.item.symbol,
         thumb: coin.item.thumb,
-        price_change: coin.item.data?.price_change_percentage_24h.usd ?? 0,
+        price_change: coin.item.data?.price_change_percentage_24h?.usd ?? 0,
         price: coin.item.data?.price ?? '0',
         sparkline: coin.item.data?.sparkline ?? ''
       }));
@@ -100,67 +101,7 @@ export default function Home() {
           <span className="block sm:inline"> {error}</span>
         </div>
       )}
-      <nav className="flex justify-between items-center p-4 bg-white dark:bg-gray-800 border-b dark:border-gray-700">
-        <Link href="/" className="flex-shrink-0">
-          <Image
-            src={"/koinx.svg"}
-            alt="logo"
-            width={100}
-            height={100}
-            className="cursor-pointer pb-1"
-          />
-        </Link>
-        <div className="flex items-center gap-6">
-          <Link 
-            href="/crypto-taxes" 
-            className="text-[#0F1629] dark:text-gray-200 hover:text-[#0141CF] dark:hover:text-blue-400 no-underline transition-colors active-nav-link"
-          >
-            Crypto Taxes
-          </Link>
-          <Link 
-            href="/free-tools" 
-            className="text-[#0F1629] dark:text-gray-200 hover:text-[#0141CF] dark:hover:text-blue-400 no-underline transition-colors"
-          >
-            Free Tools
-          </Link>
-          <Link 
-            href="/resource-center" 
-            className="text-[#0F1629] dark:text-gray-200 hover:text-[#0141CF] dark:hover:text-blue-400 no-underline transition-colors"
-          >
-            Resource Center
-          </Link>
-          <div className="flex items-center gap-2">
-            <Link
-              href="/get-started"
-              className="bg-[#1B4AEF] text-white px-6 py-2 rounded-lg hover:bg-[#1235b5] transition-colors"
-            >
-              Get Started
-            </Link>
-            <ThemeToggle />
-          </div>
-        </div>
-        <ul className={` ${styles.menu} ${ menuClick ? styles.click : ''} `} onClick={() => handleMenuClick()}>
-          <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
-          <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
-          <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
-        </ul>
-        <div className={`${styles.menuList} ${menuClick ? styles.menuShow : ''} transition-all ease-in-out duration-300`}>
-          <ul className={`flex flex-col gap-8 items-center justify-center h-full`}>
-            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold active-nav-link">
-              Crypto Taxes
-            </li>
-            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold">
-              Free Tools
-            </li>
-            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold">
-              Resource Center
-            </li>
-            <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer mb-1 font-semibold">
-              Get Started
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar />
       <main className="min-h-screen px-4 sm:px-8 lg:px-14 bg-[#EFF2F5] dark:bg-gray-900">
         <div className="container text-left">
           <p className="text-sm text-gray-600 dark:text-gray-300 py-4 text-left">
@@ -540,11 +481,30 @@ export default function Home() {
       <footer className="p-10 pt-20 pb-20 w-full flex flex-col gap-8">
         <div className=" flex flex-col gap-5">
           <h1 className="font-semibold text-2xl">You May Also Like</h1>
-          <div>
-            <div className="flex w-[100%] gap-2 overflow-x-scroll overflow-y-hidden" style={{scrollbarWidth:"none"}}>
+          <div className="relative">
+            {/* Previous button - hidden on mobile */}
+            <button 
+              className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-800 shadow-lg rounded-full p-2 hidden md:block hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                const container = document.getElementById('likeCoinsScroll');
+                if (container) {
+                  container.scrollLeft -= 200;
+                }
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 19.5L7.5 12L15 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <div 
+              id="likeCoinsScroll"
+              className="flex w-[100%] gap-4 overflow-x-scroll overflow-y-hidden scroll-smooth px-1" 
+              style={{scrollbarWidth:"none"}}
+            >
               {likeCoinsList && likeCoinsList.map((obj) => {
                 return (
-                  <div className={`border-2  border-[#E3E3E3] rounded-lg p-4`} key={v4()}>
+                  <div className={`border-2 border-[#E3E3E3] rounded-lg p-4 min-w-[252px]`} key={v4()}>
                     <div className="w-[252px] h-[160px] flex gap-3 flex-col">
                       <div className="flex items-center gap-2">
                         <Image
@@ -556,7 +516,9 @@ export default function Home() {
                           key={v4()}
                         />
                         <p>{obj.symbol}</p>
-                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] dark:bg-gray-700 rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] dark:bg-gray-700 rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>
+                          {Number(obj.price_change) > 0 ? '+' + Number(obj.price_change).toFixed(2) + '%' : Number(obj.price_change).toFixed(2) + '%'}
+                        </p>
                       </div>
                       <p className="font-semibold text-xl">{obj.price}</p>
                       {obj.sparkline && <Image src={obj.sparkline} alt="sparkline" width={150} height={150} /> }
@@ -565,15 +527,50 @@ export default function Home() {
                 )
               })}
             </div>
+
+            {/* Next button */}
+            <button 
+              className="absolute right-[-20px] top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-800 shadow-lg rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                const container = document.getElementById('likeCoinsScroll');
+                if (container) {
+                  container.scrollLeft += 200;
+                }
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 4.5L16.5 12L9 19.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
+
         <div className=" flex flex-col gap-5">
           <h1 className="font-semibold text-2xl">Trending Coins</h1>
-          <div>
-            <div className="flex w-[100%] gap-2 overflow-x-scroll overflow-y-hidden" style={{scrollbarWidth:"none"}}>
+          <div className="relative">
+            {/* Previous button - hidden on mobile */}
+            <button 
+              className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-800 shadow-lg rounded-full p-2 hidden md:block hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                const container = document.getElementById('trendingCoinsScroll');
+                if (container) {
+                  container.scrollLeft -= 200;
+                }
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 19.5L7.5 12L15 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            <div 
+              id="trendingCoinsScroll"
+              className="flex w-[100%] gap-4 overflow-x-scroll overflow-y-hidden scroll-smooth px-1" 
+              style={{scrollbarWidth:"none"}}
+            >
               {likeCoinsList && likeCoinsList.map((obj) => {
                 return (
-                  <div className={`border-2  border-[#E3E3E3] rounded-lg p-4`} key={v4()}>
+                  <div className={`border-2 border-[#E3E3E3] rounded-lg p-4 min-w-[252px]`} key={v4()}>
                     <div className="w-[252px] h-[160px] flex gap-3 flex-col">
                       <div className="flex items-center gap-2">
                         <Image
@@ -585,7 +582,9 @@ export default function Home() {
                           key={v4()}
                         />
                         <p>{obj.symbol}</p>
-                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] dark:bg-gray-700 rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] dark:bg-gray-700 rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>
+                          {Number(obj.price_change) > 0 ? '+' + Number(obj.price_change).toFixed(2) + '%' : Number(obj.price_change).toFixed(2) + '%'}
+                        </p>
                       </div>
                       <p className="font-semibold text-xl">{obj.price}</p>
                       {obj.sparkline && <Image src={obj.sparkline} alt="sparkline" width={150} height={150} /> }
@@ -594,6 +593,21 @@ export default function Home() {
                 )
               })}
             </div>
+
+            {/* Next button */}
+            <button 
+              className="absolute right-[-20px] top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-800 shadow-lg rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                const container = document.getElementById('trendingCoinsScroll');
+                if (container) {
+                  container.scrollLeft += 200;
+                }
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 4.5L16.5 12L9 19.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </footer>
