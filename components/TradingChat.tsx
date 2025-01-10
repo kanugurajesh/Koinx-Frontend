@@ -29,8 +29,10 @@ function TradingViewWidget() {
     container.current.appendChild(script);
 
     return () => {
-      // @ts-ignore
-      container.current.removeChild(script);
+      if (container.current) {
+        // @ts-ignore
+        container.current.removeChild(script);
+      }
     };
   }, []);
 

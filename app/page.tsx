@@ -6,13 +6,18 @@ import styles from "@/styles/app.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Chart from "@/components/TradingChat";
 import Link from "next/link";
-import {v4} from "uuid";
+import { v4 } from "uuid";
+import { fetchBitcoinPrice, fetchTrendingCoins } from "@/lib/api";
+import { BitcoinPrice, TrendingCoinsResponse, TrendingCoinListItem, LikeCoinListItem } from "@/types";
+import { CoinSkeleton } from "@/components/Skeleton";
 
 export default function Home() {
-  const [bitcoinPrice, setBitcoinPrice] = useState();
-  const [trendingCoins, setTrendingCoins] = useState();
-  const [trendingCoinsList, setTrendingCoinsList] = useState();
-  const [likeCoinsList, setlikeCoinsList] = useState();
+  const [bitcoinPrice, setBitcoinPrice] = useState<BitcoinPrice | null>(null);
+  const [trendingCoins, setTrendingCoins] = useState<TrendingCoinsResponse | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [trendingCoinsList, setTrendingCoinsList] = useState<TrendingCoinListItem[]>([]);
+  const [likeCoinsList, setLikeCoinsList] = useState<LikeCoinListItem[]>([]);
   const [menuClick, setMenuClick] = useState(false);
   
   const handleMenuClick = () => {
@@ -20,105 +25,80 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
+      setIsLoading(true);
+      setError(null);
+      
       try {
-        toast.loading("Fetching bitcoin data");
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=inr%2Cusd&include_24hr_change=true"
-        );
+        const [bitcoinResponse, trendingResponse] = await Promise.all([
+          fetchBitcoinPrice(),
+          fetchTrendingCoins()
+        ]);
 
-        if (!response) {
-          toast.dismiss();
-          toast.error("Error fetching bitoin data");
-          return;
+        if (bitcoinResponse.error || trendingResponse.error) {
+          throw new Error(bitcoinResponse.error || trendingResponse.error || 'An error occurred while fetching data');
         }
 
-        const data = await response.json();
-        toast.dismiss();
-        setBitcoinPrice(data.bitcoin);
-        toast.success("Bitcoin data fetched");
-      } catch (error) {
-        toast.dismiss();
-        toast.error("Cannot fetch bitcoin data");
+        setBitcoinPrice(bitcoinResponse.data);
+        setTrendingCoins(trendingResponse.data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+        toast.error('Failed to load data. Please try again.');
+      } finally {
+        setIsLoading(false);
       }
     };
-    fetchData();
+
+    loadData();
   }, []);
 
   useEffect(() => {
-    const url = "https://api.coingecko.com/api/v3/search/trending";
-    const API_KEY = process.env.NEXT_PUBLIC_COINGECKO_API_KEY as string;
-    const options = { method: "GET", headers: { "x-cg-demo-api-key": API_KEY } };
-    const fetchData = async () => {
-      await fetch(url, options)
-        .then((res) => res.json())
-        .then((json) => {
-          // console.log(json)
-          setTrendingCoins(json.coins);
-        })
-        .catch((err) => {
-          toast.error("Error fetching trending coins");
-          console.error("error:" + err);
-        });
-    };
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    let count = 0;
-    const tempList = [];
-    // @ts-ignore
-    for (let key in trendingCoins) {
-      const firstValue = trendingCoins[key];
-      const data = {
-        // @ts-ignore
-        name: firstValue.item.name,
-        // @ts-ignore
-        thumb: firstValue.item.thumb,
-        // @ts-ignore
-        price_change: firstValue.item.data.price_change_percentage_24h.usd,
-      };
-      tempList.push(data);
-      count++;
-      if (count > 2) {
-        break;
-      }
+    if (!trendingCoins?.coins || !Array.isArray(trendingCoins.coins)) {
+      setTrendingCoinsList([]);
+      return;
     }
-    // @ts-ignore
+
+    const tempList = trendingCoins.coins
+      .slice(0, 3)
+      .map(coin => ({
+        name: coin.item.name,
+        thumb: coin.item.thumb,
+        symbol: coin.item.symbol,
+        price_btc: coin.item.price_btc,
+        market_cap_rank: coin.item.market_cap_rank
+      }));
+
     setTrendingCoinsList(tempList);
   }, [trendingCoins]);
 
-  // useEffect(() => {
-  //   console.log(trendingCoinsList)
-  // },[trendingCoinsList])
-
   useEffect(() => {
-    const tempList = [];
-    // @ts-ignore
-    for(let key in trendingCoins) {
-      const firstValue = trendingCoins[key];
-      const data = {
-        // @ts-ignore
-        symbol: firstValue.item.symbol,
-        // @ts-ignore
-        thumb: firstValue.item.thumb,
-        // @ts-ignore
-        price_change: firstValue.item.data.price_change_percentage_24h.usd,
-        // @ts-ignore
-        price: firstValue.item.data.price,
-        // @ts-ignore
-        sparkline: firstValue.item.data.sparkline
-      }
-      tempList.push(data);
+    if (!trendingCoins?.coins || !Array.isArray(trendingCoins.coins)) {
+      setLikeCoinsList([]);
+      return;
     }
-    console.log(tempList)
-    // @ts-ignore
-    setlikeCoinsList(tempList);
-  },[trendingCoins])
+
+    const tempList = trendingCoins.coins
+      .filter(coin => coin.item.data)
+      .map(coin => ({
+        symbol: coin.item.symbol,
+        thumb: coin.item.thumb,
+        price_change: coin.item.data?.price_change_percentage_24h.usd ?? 0,
+        price: coin.item.data?.price ?? '0',
+        sparkline: coin.item.data?.sparkline ?? ''
+      }));
+
+    setLikeCoinsList(tempList);
+  }, [trendingCoins])
 
   return (
-    <div  className={`relative ${menuClick ? 'overflow-hidden h-screen':''}`}>
+    <div className={`relative ${menuClick ? 'overflow-hidden h-screen':''}`}>
       <Toaster />
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <strong className="font-bold">Error!</strong>
+          <span className="block sm:inline"> {error}</span>
+        </div>
+      )}
       <nav
         className={`flex justify-between items-center border-[#DEDFE2] border-bottom border-b-2 ${styles.navbar}`}
       >
@@ -176,55 +156,55 @@ export default function Home() {
         <section className={`${styles.section1} flex justify-between`}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
             <div className="flex flex-col p-6 bg-white rounded-md gap-6">
-              <div className="flex flex-col gap-8">
-                <div className="flex gap-7 items-center">
-                  <div className="flex gap-2 items-center">
-                    <Image
-                      src="/bitcoin.svg"
-                      alt="bitcoin"
-                      width={30}
-                      height={30}
-                    />
-                    <p className="font-bold text-lg">
-                      Bitcoin{" "}
-                      <span className="font-medium text-sm text-[#5D667B]">
-                        BTC
-                      </span>{" "}
-                    </p>
-                  </div>
-                  <p className="bg-[#808A9D] w-[80px] h-[40px] flex justify-center items-center rounded-md text-white">
-                    Rank #1
-                  </p>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <div className="flex gap-8 items-center">
-                    <p className="text-2xl font-bold">
-                      $ {/* @ts-ignore */}
-                      {bitcoinPrice &&
-                      // @ts-ignore
-                        Intl.NumberFormat("en-IN").format(bitcoinPrice.usd)}
-                    </p>
-                    <div className="flex gap-2 items-center">
-                      <span className="flex gap-1 items-center text-[#14B079] bg-[#EBF9F4] w-[84px] h-[28px] justify-center rounded-md">
+              {isLoading ? (
+                <CoinSkeleton />
+              ) : (
+                <>
+                  <div className="flex flex-col gap-8">
+                    <div className="flex gap-7 items-center">
+                      <div className="flex gap-2 items-center">
                         <Image
-                          src="/arrowup.svg"
-                          alt=""
-                          width={10}
-                          height={10}
+                          src="/bitcoin.svg"
+                          alt="bitcoin"
+                          width={30}
+                          height={30}
                         />
-                        {/* @ts-ignore */}
-                        {bitcoinPrice && bitcoinPrice.usd_24h_change.toFixed(2)}
-                        %
-                      </span>
-                      <p className="text-[#768396] text-sm">(24H)</p>
+                        <p className="font-bold text-lg">
+                          Bitcoin{" "}
+                          <span className="font-medium text-sm text-[#5D667B]">
+                            BTC
+                          </span>{" "}
+                        </p>
+                      </div>
+                      <p className="bg-[#808A9D] w-[80px] h-[40px] flex justify-center items-center rounded-md text-white">
+                        Rank #1
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="flex gap-8 items-center">
+                        <p className="text-2xl font-bold">
+                          $ {bitcoinPrice && Intl.NumberFormat("en-IN").format(bitcoinPrice.usd)}
+                        </p>
+                        <div className="flex gap-2 items-center">
+                          <span className={`flex gap-1 items-center ${bitcoinPrice && bitcoinPrice.usd_24h_change > 0 ? 'text-[#14B079] bg-[#EBF9F4]' : 'text-red-500 bg-red-100'} w-[84px] h-[28px] justify-center rounded-md`}>
+                            <Image
+                              src={bitcoinPrice && bitcoinPrice.usd_24h_change > 0 ? "/arrowup.svg" : "/arrowdown.svg"}
+                              alt=""
+                              width={10}
+                              height={10}
+                            />
+                            {bitcoinPrice && Math.abs(bitcoinPrice.usd_24h_change).toFixed(2)}%
+                          </span>
+                          <p className="text-[#768396] text-sm">(24H)</p>
+                        </div>
+                      </div>
+                      <p className="text-md font-semibold">
+                        ₹ {bitcoinPrice && Intl.NumberFormat("en-US").format(bitcoinPrice.inr)}
+                      </p>
                     </div>
                   </div>
-                  <p className="text-md font-semibold">
-                    ₹ {/* @ts-ignore */}
-                    {bitcoinPrice && Intl.NumberFormat("en-US").format(bitcoinPrice.inr)}
-                  </p>
-                </div>
-              </div>
+                </>
+              )}
               <div className={`${styles.leftpanelchart}`}>
                 <Chart />
               </div>
@@ -269,7 +249,7 @@ export default function Home() {
                 href="/"
                 className="w-[237px] h-[48px] text-black bg-white flex justify-center items-center font-bold rounded-md"
               >
-                Get Started for Free 🡪
+                Get Started for Free 
               </Link>
             </div>
             <div className={`${styles.rightpanelnote} h-[225px] bg-white rounded-md p-5`}>
@@ -277,39 +257,37 @@ export default function Home() {
                 Trending Coins (24h)
               </h1>
               <div className="flex flex-col gap-5">
-                {/* @ts-ignore */}
-                {trendingCoinsList &&
-                // @ts-ignore
-                  trendingCoinsList.map((obj) => {
-                    return (
-                      <div className="flex items-center justify-between" key={v4()}>
-                        <div className="flex font-semibold items-center gap-2" key={v4()}>
-                          <Image
-                            src={obj.thumb}
-                            alt="data"
-                            width={30}
-                            height={30}
-                            style={{borderRadius:'50%'}}
-                            key={v4()}
-                          />
-                          <p key={v4()}>{obj.name}</p>
-                        </div>
-                        <div key={v4()}>
-                          <span className="flex gap-1 items-center text-[#14B079] bg-[#EBF9F4] w-[84px] h-[28px] justify-center rounded-md" key={v4()}>
-                          <Image
-                            src="/arrowup.svg"
-                            alt=""
-                            width={10}
-                            height={10}
-                          />
-                          {/* @ts-ignore */}
-                          {obj.price_change.toFixed(2)}
-                          %
-                        </span>
+                {isLoading ? (
+                  <>
+                    <CoinSkeleton />
+                    <CoinSkeleton />
+                    <CoinSkeleton />
+                  </>
+                ) : (
+                  trendingCoinsList.map((coin) => (
+                    <div className="flex items-center justify-between" key={v4()}>
+                      <div className="flex font-semibold items-center gap-2">
+                        <Image
+                          src={coin.thumb}
+                          alt={coin.name}
+                          width={30}
+                          height={30}
+                          style={{borderRadius:'50%'}}
+                        />
+                        <p>{coin.name}</p>
                       </div>
+                      <span className={`flex gap-1 items-center ${coin.price_btc > 0 ? 'text-[#14B079] bg-[#EBF9F4]' : 'text-red-500 bg-red-100'} w-[84px] h-[28px] justify-center rounded-md`}>
+                        <Image
+                          src={coin.price_btc > 0 ? "/arrowup.svg" : "/arrowdown.svg"}
+                          alt=""
+                          width={10}
+                          height={10}
+                        />
+                        {Math.abs(coin.price_btc).toFixed(2)}%
+                      </span>
                     </div>
-                    );
-                  })}
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -469,13 +447,13 @@ export default function Home() {
             <h2 className="font-semibold text-lg">Lorem ipsum dolor sit amet.</h2>
             <div className="flex flex-col gap-8 mt-2 font-medium text-[#3E424A]">
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam cupiditate molestias dolorum culpa consectetur veniam quas fugit, deserunt suscipit! Magnam quod cupiditate a atque officiis eligendi ab aliquid sint! Nihil, necessitatibus impedit? Voluptate vitae commodi dolores provident accusamus obcaecati? Quos unde mollitia obcaecati earum, at nam omnis placeat rem vitae.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!
               </p>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam cupiditate molestias dolorum culpa consectetur veniam quas fugit, deserunt suscipit! Magnam quod cupiditate a atque officiis eligendi ab aliquid sint! Nihil, necessitatibus impedit? Voluptate vitae commodi dolores provident accusamus obcaecati? Quos unde mollitia obcaecati earum, at nam omnis placeat rem vitae.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!
               </p>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam cupiditate molestias dolorum culpa consectetur veniam quas fugit, deserunt suscipit! Magnam quod cupiditate a atque officiis eligendi ab aliquid sint! Nihil, necessitatibus impedit? Voluptate vitae commodi dolores provident accusamus obcaecati? Quos unde mollitia obcaecati earum, at nam omnis placeat rem vitae.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!
               </p>
             </div>
           </div>
@@ -487,7 +465,7 @@ export default function Home() {
                 <div className="flex flex-col gap-3">
                   <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
                   <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold ${styles.change}`}>
-                    Check Now 🡪
+                    Check Now 
                   </Link>
                 </div>
               </div>
@@ -496,7 +474,7 @@ export default function Home() {
                 <div className="flex flex-col gap-3">
                   <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
                   <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold ${styles.change}`}>
-                    Check Now 🡪
+                    Check Now 
                   </Link>
                 </div>
               </div>
@@ -568,7 +546,6 @@ export default function Home() {
           <h1 className="font-semibold text-2xl">You May Also Like</h1>
           <div>
             <div className="flex w-[100%] gap-2 overflow-x-scroll overflow-y-hidden" style={{scrollbarWidth:"none"}}>
-              {/* @ts-ignore */}
               {likeCoinsList && likeCoinsList.map((obj) => {
                 return (
                   <div className={`border-2  border-[#E3E3E3] rounded-lg p-4`} key={v4()}>
@@ -583,10 +560,10 @@ export default function Home() {
                           key={v4()}
                         />
                         <p>{obj.symbol}</p>
-                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ obj.price_change.toFixed(2) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{obj.price_change.toFixed(2) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
                       </div>
                       <p className="font-semibold text-xl">{obj.price}</p>
-                      <Image src={obj.sparkline} alt="sparkline" width={150} height={150} />
+                      {obj.sparkline && <Image src={obj.sparkline} alt="sparkline" width={150} height={150} /> }
                     </div>
                   </div>
                 )
@@ -598,7 +575,6 @@ export default function Home() {
           <h1 className="font-semibold text-2xl">Trending Coins</h1>
           <div>
             <div className="flex w-[100%] gap-2 overflow-x-scroll overflow-y-hidden" style={{scrollbarWidth:"none"}}>
-              {/* @ts-ignore */}
               {likeCoinsList && likeCoinsList.map((obj) => {
                 return (
                   <div className={`border-2  border-[#E3E3E3] rounded-lg p-4`} key={v4()}>
@@ -613,7 +589,7 @@ export default function Home() {
                           key={v4()}
                         />
                         <p>{obj.symbol}</p>
-                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ obj.price_change.toFixed(2) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{obj.price_change.toFixed(2) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
                       </div>
                       <p className="font-semibold text-xl">{obj.price}</p>
                       {obj.sparkline && <Image src={obj.sparkline} alt="sparkline" width={150} height={150} /> }
