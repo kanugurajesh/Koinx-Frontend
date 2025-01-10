@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav className="relative bg-white dark:bg-gray-800">
       {/* Desktop and Mobile Header */}
-      <div className="flex justify-between items-center p-4 border-b dark:border-gray-700">
+      <div className="flex justify-between items-center p-2 px-4 border-b dark:border-gray-700">
         <Link href="/" className="flex-shrink-0">
           <Image
             src="/koinx.svg"

@@ -102,7 +102,7 @@ export default function Home() {
         </div>
       )}
       <Navbar />
-      <main className="min-h-screen px-4 sm:px-8 lg:px-14 bg-[#EFF2F5] dark:bg-gray-900">
+      <main className="min-h-screen px-4 sm:px-8 lg:px-14 bg-[#EFF2F5] dark:bg-gray-900 pb-8">
         <div className="container text-left">
           <p className="text-sm text-gray-600 dark:text-gray-300 py-4 text-left">
             Cryptocurrencies &gt;&gt; <span className="font-medium text-black dark:text-white">Bitcoin</span>
@@ -417,7 +417,7 @@ export default function Home() {
                 <Image src="/trade1.svg" alt="trade" width={120} height={120} />
                 <div className="flex flex-col gap-3">
                   <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
-                  <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold ${styles.change}`}>
+                  <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold text-black dark:text-black ${styles.change}`}>
                     Check Now 
                   </Link>
                 </div>
@@ -426,7 +426,7 @@ export default function Home() {
                 <Image src="/trade2.svg" alt="trade" width={120} height={120} />
                 <div className="flex flex-col gap-3">
                   <h1 className="font-semibold text-white text-xl">Calculate your Profits</h1>
-                  <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold ${styles.change}`}>
+                  <Link href="/" className={`bg-white w-[150px] rounded-md p-2 flex justify-center items-center font-semibold text-black dark:text-black ${styles.change}`}>
                     Check Now 
                   </Link>
                 </div>
