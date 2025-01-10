@@ -464,15 +464,23 @@ export default function Home() {
           </p>
           <div className="flex flex-col gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-[#E8F4FD] dark:bg-gray-700 rounded-lg p-6 flex items-center gap-6">
-                <div className="flex flex-col w-[60%] justify-between items-center">
-                  <Image src="/person.svg" alt="" width={100} height={100} />
-                  <p className="font-semibold text-lg mt-1 text-nowrap text-black dark:text-white">John Smith</p>
-                  <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
+              <div key={i} className="bg-[#E8F4FD] dark:bg-gray-700 rounded-lg p-6">
+                <div className="flex flex-col md:flex-row md:items-center gap-6">
+                  <div className="flex flex-col items-center md:items-start mb-6 md:mb-0 md:min-w-[200px]">
+                    <Image 
+                      src="/person.svg" 
+                      alt="" 
+                      width={120} 
+                      height={120} 
+                      className="rounded-lg mb-2" 
+                    />
+                    <h3 className="text-[16px] font-semibold text-black dark:text-white mt-2">John Smith</h3>
+                    <p className="text-[14px] text-[#788194]">Designation here</p>
+                  </div>
+                  <p className="font-medium text-[#1E293B] dark:text-gray-300 md:text-left">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!
+                  </p>
                 </div>
-                <p className="font-medium text-[#1E293B]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!
-                </p>
               </div>
             ))}
           </div>
