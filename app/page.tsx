@@ -148,14 +148,14 @@ export default function Home() {
         </div>
       </nav>
       <main
-        className={`bg-[#EFF2F5] h-full w-full ${styles.main} flex flex-col gap-2 pb-8`}
+        className={`min-h-screen bg-white dark:bg-gray-900 ${styles.main} flex flex-col gap-2 pb-8`}
       >
         <p className="text-sm mt-4 mb-2">
           Cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
         </p>
         <section className={`${styles.section1} flex justify-between`}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
-            <div className="flex flex-col p-6 bg-white rounded-md gap-6">
+            <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
               {isLoading ? (
                 <CoinSkeleton />
               ) : (
@@ -252,7 +252,7 @@ export default function Home() {
                 Get Started for Free 
               </Link>
             </div>
-            <div className={`${styles.rightpanelnote} h-[225px] bg-white rounded-md p-5`}>
+            <div className={`${styles.rightpanelnote} h-[225px] bg-white dark:bg-gray-800 rounded-md p-5`}>
               <h1 className="font-semibold text-xl mb-6">
                 Trending Coins (24h)
               </h1>
@@ -292,7 +292,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.section2} ${styles.prizes} bg-white rounded-md gap-8`}>
+        <section className={`${styles.section2} ${styles.prizes} bg-white dark:bg-gray-800 rounded-md gap-8`}>
           <div className="p-5 flex flex-col gap-8 w-[100%]">
             <h1 className="font-semibold text-2xl">Performance</h1>
             <div className="w-[100%] flex flex-col gap-10">
@@ -377,7 +377,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.section2} ${styles.section3} bg-white rounded-md flex flex-col gap-6 p-6 mt-3` }>
+        <section className={`${styles.section2} ${styles.section3} bg-white dark:bg-gray-800 rounded-md flex flex-col gap-6 p-6 mt-3` }>
           <h1 className="font-semibold text-2xl">Sentiment</h1>
           <div className="flex flex-col gap-5 w-[100%]">
             <div className="flex gap-2">
@@ -385,21 +385,21 @@ export default function Home() {
               <Image src="/question.svg" alt="question" width={20} height={20} className="cursor-pointer" />
             </div>
             <div className="flex gap-2 overflow-x-scroll w-[100%] overflow-y-hidden" style={{scrollbarWidth:'none'}}>
-              <div className={`${styles.section3note} flex items-start gap-3 bg-[#E8F4FD] p-5 rounded-lg`}>
+              <div className={`${styles.section3note} flex items-start gap-3 bg-[#E8F4FD] dark:bg-gray-700 p-5 rounded-lg`}>
                 <Image src="/news.svg" alt="news" width={50} height={50} />
                 <div className={`${styles.section3note}`}>
                   <p className="font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione</p>
                   <p className="font-mediumj text-[#768396]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dicta porro, sit culpa nesciunt fugiat quasi eos velit minus fugit cum beatae numquam dolorem aspernatur, quaerat quo voluptatibus ducimus mollitia</p>
                 </div>
               </div>
-              <div className={`${styles.section3note} flex items-start gap-3 bg-[#EBF9F4] p-5 rounded-lg`}>
+              <div className={`${styles.section3note} flex items-start gap-3 bg-[#EBF9F4] dark:bg-gray-700 p-5 rounded-lg`}>
                 <Image src="/growth.svg" alt="news" width={50} height={50} />
                 <div className={`w-[456px]`}>
                   <p className="font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione</p>
                   <p className="font-mediumj text-[#768396]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dicta porro, sit culpa nesciunt fugiat quasi eos velit minus fugit cum beatae numquam dolorem aspernatur, quaerat quo voluptatibus ducimus mollitia</p>
                 </div>
               </div>
-              <div className={`${styles.section3note} flex items-start gap-3 bg-[#E8F4FD] p-5 rounded-lg`}>
+              <div className={`${styles.section3note} flex items-start gap-3 bg-[#E8F4FD] dark:bg-gray-700 p-5 rounded-lg`}>
                 <Image src="/news.svg" alt="news" width={50} height={50} />
                 <div className={`${styles.section3note}`}>
                   <p className="font-semibold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione</p>
@@ -414,7 +414,7 @@ export default function Home() {
               <Image src="/question.svg" alt="question" width={20} height={20} className="cursor-pointer" />
             </div>
             <div className="flex gap-6 items-center w-[100%]">
-              <div className="w-[140.86px] h-[120px] bg-[#EBF9F4] flex justify-center items-center" style={{borderRadius:'50%'}}>
+              <div className="w-[140.86px] h-[120px] bg-[#EBF9F4] dark:bg-gray-700 flex justify-center items-center" style={{borderRadius:'50%'}}>
                 <h1 className="text-[#0FBA83] text-3xl font-semibold flex items-center">76 <span className="text-lg">%</span></h1>
               </div>
               <div className="flex flex-col gap-2  w-[100%] text-[#7C7E8C]">
@@ -437,7 +437,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={`${styles.section4} bg-white rounded-md mt-3 p-6 flex flex-col gap-5`}>
+        <section className={`${styles.section4} bg-white dark:bg-gray-800 rounded-md mt-3 p-6 flex flex-col gap-5`}>
           <h1 className="font-semibold text-2xl">About Bitcoin</h1>
           <div className="flex flex-col gap-3 border-b-[2px] pb-4">
             <h2 className="font-semibold text-lg">What is Bitcoin?</h2>
@@ -484,7 +484,7 @@ export default function Home() {
             <p className="text-[#3E424A] font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, tempore minus. Corrupti cupiditate, eaque voluptatibus excepturi, ducimus incidunt repellat quis vitae sint cum inventore deserunt nesciunt aliquid, numquam at voluptatem. Ad eveniet voluptates repudiandae nihil aut incidunt? Eius, earum ipsam.</p>
           </div>
         </section>
-        <section className={`${styles.section4} bg-white rounded-md p-6 mt-3 flex flex-col gap-6`}>
+        <section className={`${styles.section4} bg-white dark:bg-gray-800 rounded-md p-6 mt-3 flex flex-col gap-6`}>
           <h1 className="text-2xl font-semibold">Tokenomics</h1>
           <div className="flex flex-col gap-4">
             <h2 className="text-xl font-semibold">Initial Distribution</h2>
@@ -504,11 +504,11 @@ export default function Home() {
           </div>
           <p className="font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, aperiam! Ab id atque iure qui dolorem optio nemo labore et omnis temporibus fugit harum error impedit tempore neque unde in possimus, modi, cum doloribus illo voluptatibus ex. Fuga beatae modi dolores eius deserunt molestiae, quos reiciendis dignissimos dolorum dolor harum quibusdam nisi esse quis, ut consectetur eveniet aliquid accusamus velit!</p>
         </section>
-        <section className={`${styles.section4} bg-white rounded-md p-6 mt-3 flex flex-col gap-6`}>
+        <section className={`${styles.section4} bg-white dark:bg-gray-800 rounded-md p-6 mt-3 flex flex-col gap-6`}>
           <h1 className="text-2xl font-semibold">Team</h1>
           <p className="font-medium text-[#3E424A]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eligendi quibusdam vel, assumenda perspiciatis perferendis exercitationem voluptate expedita quo ipsa.</p>
           <div className="flex flex-col gap-6">
-            <div className={`bg-[#E8F4FD] ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
+            <div className={`bg-[#E8F4FD] dark:bg-gray-700 ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
               <div className="flex flex-col w-[60%] justify-between items-center">
                 <Image src="/person.svg" alt="" width={100} height={100} />
                 <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
@@ -518,7 +518,7 @@ export default function Home() {
                 <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
               </div>
             </div>
-            <div className={`bg-[#E8F4FD] ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
+            <div className={`bg-[#E8F4FD] dark:bg-gray-700 ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
               <div className="flex flex-col w-[60%] justify-between items-center">
                 <Image src="/person.svg" alt="" width={100} height={100} />
                 <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
@@ -528,7 +528,7 @@ export default function Home() {
                 <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
               </div>
             </div>
-            <div className={`bg-[#E8F4FD] ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
+            <div className={`bg-[#E8F4FD] dark:bg-gray-700 ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
               <div className="flex flex-col w-[60%] justify-between items-center">
                 <Image src="/person.svg" alt="" width={100} height={100} />
                 <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
@@ -560,7 +560,7 @@ export default function Home() {
                           key={v4()}
                         />
                         <p>{obj.symbol}</p>
-                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] dark:bg-gray-700 rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
                       </div>
                       <p className="font-semibold text-xl">{obj.price}</p>
                       {obj.sparkline && <Image src={obj.sparkline} alt="sparkline" width={150} height={150} /> }
@@ -589,7 +589,7 @@ export default function Home() {
                           key={v4()}
                         />
                         <p>{obj.symbol}</p>
-                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
+                        <p className={`p-1 pl-3 pr-3 bg-[#EBF9F4] dark:bg-gray-700 rounded-md text-[#32BE88] ${ Number(obj.price_change) > 0 ? '':'bg-[#fef0ee] text-[#e96975]'}`}>{Number(obj.price_change) > 0 ?  '+' + obj.price_change.toFixed(2) + '%' : obj.price_change.toFixed(2) + '%'}</p>
                       </div>
                       <p className="font-semibold text-xl">{obj.price}</p>
                       {obj.sparkline && <Image src={obj.sparkline} alt="sparkline" width={150} height={150} /> }
