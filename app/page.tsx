@@ -161,10 +161,12 @@ export default function Home() {
           </ul>
         </div>
       </nav>
-      <main className="min-h-screen bg-[#EFF2F5] dark:bg-gray-900">
-        <p className="text-sm mt-4 mb-2 text-gray-600 dark:text-gray-300">
-          Cryptocurrencies &gt;&gt; <span className="font-medium text-black dark:text-white">Bitcoin</span>
-        </p>
+      <main className="min-h-screen px-4 sm:px-8 lg:px-14 bg-[#EFF2F5] dark:bg-gray-900">
+        <div className="container text-left">
+          <p className="text-sm text-gray-600 dark:text-gray-300 py-4 text-left">
+            Cryptocurrencies &gt;&gt; <span className="font-medium text-black dark:text-white">Bitcoin</span>
+          </p>
+        </div>
         <section className={`${styles.section1} flex justify-between`}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
             <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
