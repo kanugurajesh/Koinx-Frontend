@@ -10,6 +10,7 @@ import { v4 } from "uuid";
 import { fetchBitcoinPrice, fetchTrendingCoins } from "@/lib/api";
 import { BitcoinPrice, TrendingCoinsResponse, TrendingCoinListItem, LikeCoinListItem } from "@/types";
 import { CoinSkeleton } from "@/components/Skeleton";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   const [bitcoinPrice, setBitcoinPrice] = useState<BitcoinPrice | null>(null);
@@ -99,32 +100,45 @@ export default function Home() {
           <span className="block sm:inline"> {error}</span>
         </div>
       )}
-      <nav
-        className={`flex justify-between items-center border-[#DEDFE2] border-bottom border-b-2 ${styles.navbar}`}
-      >
-        <Link href="/">
+      <nav className="flex justify-between items-center p-4 bg-white dark:bg-gray-800 border-b dark:border-gray-700">
+        <Link href="/" className="flex-shrink-0">
           <Image
             src={"/koinx.svg"}
-            alt="koinx"
+            alt="logo"
             width={100}
             height={100}
             className="cursor-pointer pb-1"
           />
         </Link>
-        <ul className={`flex gap-6 items-center ${styles.list}`}>
-          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">
+        <div className="flex items-center gap-6">
+          <Link 
+            href="/crypto-taxes" 
+            className="text-[#0F1629] dark:text-gray-200 hover:text-[#0141CF] dark:hover:text-blue-400 no-underline transition-colors active-nav-link"
+          >
             Crypto Taxes
-          </li>
-          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">
+          </Link>
+          <Link 
+            href="/free-tools" 
+            className="text-[#0F1629] dark:text-gray-200 hover:text-[#0141CF] dark:hover:text-blue-400 no-underline transition-colors"
+          >
             Free Tools
-          </li>
-          <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1">
+          </Link>
+          <Link 
+            href="/resource-center" 
+            className="text-[#0F1629] dark:text-gray-200 hover:text-[#0141CF] dark:hover:text-blue-400 no-underline transition-colors"
+          >
             Resource Center
-          </li>
-          <li className="bg-gradient-to-r from-[#284BEA] to-[#1B4AEF] p-2 pl-6 pr-6 rounded-md text-white cursor-pointer mb-1">
-            Get Started
-          </li>
-        </ul>
+          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/get-started"
+              className="bg-[#1B4AEF] text-white px-6 py-2 rounded-lg hover:bg-[#1235b5] transition-colors"
+            >
+              Get Started
+            </Link>
+            <ThemeToggle />
+          </div>
+        </div>
         <ul className={` ${styles.menu} ${ menuClick ? styles.click : ''} `} onClick={() => handleMenuClick()}>
           <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
           <li className="w-7 h-1 bg-black transition-all duration-800 ease-in-out"></li>
@@ -132,7 +146,7 @@ export default function Home() {
         </ul>
         <div className={`${styles.menuList} ${menuClick ? styles.menuShow : ''} transition-all ease-in-out duration-300`}>
           <ul className={`flex flex-col gap-8 items-center justify-center h-full`}>
-            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold">
+            <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold active-nav-link">
               Crypto Taxes
             </li>
             <li className="cursor-pointer hover:text-[#0141CF] border-0 border-b-2 border-[#FFFFFF] hover:border-[#0141CF] transition-all ease-in-out duration-500 pb-1 font-semibold">
@@ -147,11 +161,9 @@ export default function Home() {
           </ul>
         </div>
       </nav>
-      <main
-        className={`min-h-screen bg-white dark:bg-gray-900 ${styles.main} flex flex-col gap-2 pb-8`}
-      >
-        <p className="text-sm mt-4 mb-2">
-          Cryptocurrencies &gt;&gt; <span className="font-medium">Bitcoin</span>
+      <main className="min-h-screen bg-[#EFF2F5] dark:bg-gray-900">
+        <p className="text-sm mt-4 mb-2 text-gray-600 dark:text-gray-300">
+          Cryptocurrencies &gt;&gt; <span className="font-medium text-black dark:text-white">Bitcoin</span>
         </p>
         <section className={`${styles.section1} flex justify-between`}>
           <div className={`flex flex-col gap-2 ${styles.leftpanel}`}>
@@ -210,29 +222,27 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-8 mb-5">
-              <ul className={`flex ${styles.leftpanellist} border-b-2 border-[#DEDFE2] pb-2 font-semibold`}>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
-                  Overview
-                </li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
-                  Fundamentals
-                </li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
-                  News Insights
-                </li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
-                  Sentiments
-                </li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
-                  Team
-                </li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
-                  Technicals
-                </li>
-                <li className="border-b-4 border-[#EFF2F5] hover:border-[#0141CF] pb-2 transition-all ease-in-out duration-300 hover:text-[#0141CF] cursor-pointer">
-                  Tokenomics
-                </li>
-              </ul>
+              <div className="flex space-x-6 border-b border-gray-200 dark:border-gray-700">
+                {[
+                  { href: '#overview', label: 'Overview', isActive: true },
+                  { href: '#fundamentals', label: 'Fundamentals' },
+                  { href: '#news-insights', label: 'News Insights' },
+                  { href: '#sentiments', label: 'Sentiments' },
+                  { href: '#team', label: 'Team' },
+                  { href: '#technicals', label: 'Technicals' },
+                  { href: '#tokenomics', label: 'Tokenomics' }
+                ].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`nav-link px-2 py-4 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors
+                      ${link.isActive ? 'active text-blue-600 dark:text-blue-400' : ''}
+                    `}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
           <div className={`flex flex-col gap-5 ${styles.rightpanel}`}>
@@ -505,39 +515,23 @@ export default function Home() {
           <p className="font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, aperiam! Ab id atque iure qui dolorem optio nemo labore et omnis temporibus fugit harum error impedit tempore neque unde in possimus, modi, cum doloribus illo voluptatibus ex. Fuga beatae modi dolores eius deserunt molestiae, quos reiciendis dignissimos dolorum dolor harum quibusdam nisi esse quis, ut consectetur eveniet aliquid accusamus velit!</p>
         </section>
         <section className={`${styles.section4} bg-white dark:bg-gray-800 rounded-md p-6 mt-3 flex flex-col gap-6`}>
-          <h1 className="text-2xl font-semibold">Team</h1>
-          <p className="font-medium text-[#3E424A]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eligendi quibusdam vel, assumenda perspiciatis perferendis exercitationem voluptate expedita quo ipsa.</p>
+          <h1 className="text-2xl font-semibold text-black dark:text-white">Team</h1>
+          <p className="text-gray-700 dark:text-gray-300 mb-6">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eligendi quibusdam vel, assumenda perspiciatis perferendis exercitationem voluptate expedita quo ipsa.
+          </p>
           <div className="flex flex-col gap-6">
-            <div className={`bg-[#E8F4FD] dark:bg-gray-700 ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
-              <div className="flex flex-col w-[60%] justify-between items-center">
-                <Image src="/person.svg" alt="" width={100} height={100} />
-                <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
-                <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-[#E8F4FD] dark:bg-gray-700 rounded-lg p-6 flex items-center gap-6">
+                <div className="flex flex-col w-[60%] justify-between items-center">
+                  <Image src="/person.svg" alt="" width={100} height={100} />
+                  <p className="font-semibold text-lg mt-1 text-nowrap text-black dark:text-white">John Smith</p>
+                  <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
+                </div>
+                <p className="font-medium text-[#1E293B]">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!
+                </p>
               </div>
-              <div>
-                <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
-              </div>
-            </div>
-            <div className={`bg-[#E8F4FD] dark:bg-gray-700 ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
-              <div className="flex flex-col w-[60%] justify-between items-center">
-                <Image src="/person.svg" alt="" width={100} height={100} />
-                <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
-                <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
-              </div>
-              <div>
-                <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
-              </div>
-            </div>
-            <div className={`bg-[#E8F4FD] dark:bg-gray-700 ${styles.teamnote} p-3 rounded-md pl-6 pr-6 gap-6`}>
-              <div className="flex flex-col w-[60%] justify-between items-center">
-                <Image src="/person.svg" alt="" width={100} height={100} />
-                <p className="font-semibold text-lg mt-1 text-nowrap">John Smith</p>
-                <p className="font-semibold text-sm text-[#64748B] text-nowrap">Designation here</p>
-              </div>
-              <div>
-                <p className="font-medium text-[#1E293B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, assumenda. Nesciunt, aut incidunt. Similique consectetur itaque quidem voluptates suscipit alias voluptatem quibusdam sit veritatis deserunt, atque praesentium quod. Optio fugiat minima fugit? Aut, eos! Dolore voluptates molestiae ex natus aspernatur!</p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
       </main>
