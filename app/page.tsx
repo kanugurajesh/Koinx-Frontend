@@ -165,7 +165,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-8 mb-5">
-              <div className="flex space-x-6 border-b border-gray-200 dark:border-gray-700">
+              <div className="flex space-x-6 border-b border-gray-200 dark:border-gray-700 overflow-scroll">
                 {[
                   { href: '#overview', label: 'Overview', isActive: true },
                   { href: '#fundamentals', label: 'Fundamentals' },
