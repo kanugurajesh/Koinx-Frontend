@@ -1,451 +1,445 @@
 .navbar {
-    padding: 1px;
-    padding-left: 35px;
-    padding-right: 35px;
+  padding: 1px;
+  padding-left: 35px;
+  padding-right: 35px;
 }
 
 .list {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .menu {
-    display: none;
+  display: none;
 }
 
 .menuList {
-    position: absolute;
-    left: -100vw;
-    top: 75px;
-    width: 100%;
-    height: 100vh;
-    background-color: white;
+  position: absolute;
+  left: -100vw;
+  top: 75px;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
 }
 
 .menuShow {
-    left: 0;
+  left: 0;
 }
 
 .click li:nth-of-type(1) {
-    transform-origin: 12px 5px;
-    transform: rotate(50deg);
+  transform-origin: 12px 5px;
+  transform: rotate(50deg);
 }
 
 .click li:nth-of-type(2) {
-    display: none;
+  display: none;
 }
 
 .click li:nth-of-type(3) {
-    transform-origin: 10px -1px;
-    transform: rotate(-50deg);
+  transform-origin: 10px -1px;
+  transform: rotate(-50deg);
 }
 
 .main {
-    padding-left: 45px;
-    padding-right: 45px;
+  padding-left: 45px;
+  padding-right: 45px;
 }
 
 .section1 {
-    display: flex;
-    gap: 20px;   
+  display: flex;
+  gap: 20px;
 }
 
 .leftpanelchart {
-    width: 881px;
-    height: 510px;
+  width: 881px;
+  height: 510px;
 }
 
 .rightpanelnote {
-    width: 427px;
+  width: 427px;
 }
 
 .leftpanellist {
-    display: flex;
-    gap: 22px;
+  display: flex;
+  gap: 22px;
 }
 
 .section2 {
-    width: 930px;
+  width: 930px;
 }
 
 .section3 {
-    height: 556px;
+  height: 556px;
 }
 
 .section3note {
-    width: 456px;
-    height: 200px;
-    scrollbar-width: none;
+  width: 456px;
+  height: 200px;
+  scrollbar-width: none;
 }
 
 .colorline {
-    width: calc(100% - 5px);
-    height: 6px;
-    border-radius: 10px;
+  width: calc(100% - 5px);
+  height: 6px;
+  border-radius: 10px;
 }
 
 .green {
-    width: calc(60%);
+  width: calc(60%);
 }
 
 .grey {
-    width: calc(20%);
+  width: calc(20%);
 }
 
 .red {
-    width: calc(40%);
+  width: calc(40%);
 }
 
 .section4 {
-    width: 930px;
+  width: 930px;
 }
 
 .teamnote {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .bitcoincard {
-    width: 300px;
-    height: 160px;
+  width: 300px;
+  height: 160px;
 }
 
-@media (max-width:800px) {
-    .list {
-        font-size: 14px;
-    }
+@media (max-width: 800px) {
+  .list {
+    font-size: 14px;
+  }
 }
 
-@media (max-width:720px) {
-    .list {
-        font-size: 12.5px;
-    }
+@media (max-width: 720px) {
+  .list {
+    font-size: 12.5px;
+  }
 }
 
 @media (max-width: 640px) {
-    .navbar {
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-    .list {
-        gap: 14px;
-    }
+  .navbar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .list {
+    gap: 14px;
+  }
 }
 
 @media (max-width: 549px) {
-    .list {
-        display: none;
-    }
-    .menu {
-        display: flex;
-        flex-direction: column;
-    }
-    .menu li {
-        margin-top: 3px;
-    }
+  .list {
+    display: none;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu li {
+    margin-top: 3px;
+  }
 
-    .navbar {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
+  .navbar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media (max-width: 1440px) {
-    .leftpanelchart {
-        width: 840px;
-    }
-    .rightpanelnote {
-        width: 410px;
-    }
+  .leftpanelchart {
+    width: 840px;
+  }
+  .rightpanelnote {
+    width: 410px;
+  }
 
-    .section2 {
-        width: 890px;
-    }
+  .section2 {
+    width: 890px;
+  }
 
-    .section4 {
-        width: 890px;
-    }
-
+  .section4 {
+    width: 890px;
+  }
 }
 
 @media (max-width: 1390px) {
-    .leftpanelchart {
-        width: 820px;
-    }
-    .rightpanelnote {
-        width: 390px;
-    }
+  .leftpanelchart {
+    width: 820px;
+  }
+  .rightpanelnote {
+    width: 390px;
+  }
 }
 
 @media (max-width: 1350px) {
-    .leftpanelchart {
-        width: 800px;
-    }
-    .rightpanelnote {
-        width: 365px;
-    }
-    .section2 {
-        width: 850px;
-    }   
-    .section4 {
-        width: 850px;
-    }
+  .leftpanelchart {
+    width: 800px;
+  }
+  .rightpanelnote {
+    width: 365px;
+  }
+  .section2 {
+    width: 850px;
+  }
+  .section4 {
+    width: 850px;
+  }
 }
 
 @media (max-width: 1300px) {
-    .leftpanelchart {
-        width: 750px;
-    }
-    .rightpanelnote {
-        width: 365px;
-    }
-    .section2 {
-        width: 800px;
-    }
-    .section4 {
-        width: 800px;
-    }
+  .leftpanelchart {
+    width: 750px;
+  }
+  .rightpanelnote {
+    width: 365px;
+  }
+  .section2 {
+    width: 800px;
+  }
+  .section4 {
+    width: 800px;
+  }
 }
 
 @media (max-width: 1250px) {
-    .leftpanelchart {
-        width: 700px;
-    }
-    .rightpanelnote {
-        width: 365px;
-    }
-    .section2 {
-        width: 750px;
-    }
-    .section4 {
-        width: 750px;
-    }
+  .leftpanelchart {
+    width: 700px;
+  }
+  .rightpanelnote {
+    width: 365px;
+  }
+  .section2 {
+    width: 750px;
+  }
+  .section4 {
+    width: 750px;
+  }
 }
 
 @media (max-width: 1200px) {
-    .leftpanelchart {
-        width: 650px;
-    }
-    .rightpanelnote {
-        width: 365px;
-    }
-    .leftpanellist {
-        font-size: 14px;
-    }
-    .section2 {
-        width: 700px;
-    }
-    .section4 {
-        width: 700px;
-    }
+  .leftpanelchart {
+    width: 650px;
+  }
+  .rightpanelnote {
+    width: 365px;
+  }
+  .leftpanellist {
+    font-size: 14px;
+  }
+  .section2 {
+    width: 700px;
+  }
+  .section4 {
+    width: 700px;
+  }
 }
 
 @media (max-width: 1150px) {
-    .leftpanelchart {
-        width: 630px;
-    }
-    .rightpanelnote {
-        width: 350px;
-    }
+  .leftpanelchart {
+    width: 630px;
+  }
+  .rightpanelnote {
+    width: 350px;
+  }
 
-    .rightpanelnote h1 {
-        font-size: larger;
-    }
+  .rightpanelnote h1 {
+    font-size: larger;
+  }
 
-    .rightpanelnote p {
-        font-size: 13.5px;
-    }
+  .rightpanelnote p {
+    font-size: 13.5px;
+  }
 
-    .leftpanellist {
-        font-size: 14px;
-    }
-    .section2 {
-        width: 680px;
-    }
-    .section4 {
-        width: 680px;
-    }
+  .leftpanellist {
+    font-size: 14px;
+  }
+  .section2 {
+    width: 680px;
+  }
+  .section4 {
+    width: 680px;
+  }
 }
 
-@media (max-width:1100px) {
-    .leftpanelchart {
-        width: calc(100vw - 120px);
-    }
+@media (max-width: 1100px) {
+  .leftpanel {
+    width: calc(100% - 10px);
+  }
 
-    .leftpanellist {
-        justify-content: space-between;
-        font-size: 15px;
-    }
+  .leftpanelchart {
+    width: calc(100% - 10px);
+  }
 
-    .rightpanel {
-        display: none;
-    }
+  .leftpanellist {
+    justify-content: space-between;
+    font-size: 15px;
+  }
 
-    .section2 {
-        width: calc(100vw - 75px);
-    }
-    .section4 {
-        width: calc(100vw - 75px);
-    }
+  .rightpanel {
+    display: none;
+  }
+
+  .section2 {
+    width: calc(100vw - 75px);
+  }
+  .section4 {
+    width: calc(100vw - 75px);
+  }
 }
 
-@media (max-width:750px) {
-    .leftpanellist {
-        width: calc(100vw - 80px);
-        overflow-x: scroll;
-    }
+@media (max-width: 750px) {
+  .leftpanellist {
+    width: calc(100vw - 80px);
+    overflow-x: scroll;
+  }
 
-    .leftpanellist li {
-        width: 400px;
-        text-wrap: nowrap;
-    }
+  .leftpanellist li {
+    width: 400px;
+    text-wrap: nowrap;
+  }
 }
 
-@media (max-width:600px) {
-    .leftpanelchart {
-        height: 391px;
-    }
+@media (max-width: 600px) {
+  .leftpanelchart {
+    height: 391px;
+  }
 }
 
-@media (max-width:650px) {
-    .teamnote {
-        display: flex;
-        flex-direction: column;
-    }
+@media (max-width: 650px) {
+  .teamnote {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-
-@media (max-width:750px) {
-    .cards {
-        display: flex;
-        flex-direction: column;
-    }
+@media (max-width: 750px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-@media (max-width:1100px) {
-    .rightpanel {
-        display: flex;
-        position: absolute;
-        bottom: -550px;
-        justify-content: space-between;
-        gap: 40px;
-        flex-direction: row;
-    }
+@media (max-width: 1100px) {
+  .rightpanel {
+    display: flex;
+    position: absolute;
+    bottom: -550px;
+    justify-content: space-between;
+    gap: 40px;
+    flex-direction: row;
+  }
 }
 
-@media (max-width:800px) {
-    .rightpanel {
-        bottom: -800px;
-        flex-direction: column;
-        left: 21%;
-    }
+@media (max-width: 800px) {
+  .rightpanel {
+    bottom: -800px;
+    flex-direction: column;
+    left: 21%;
+  }
 
-    .rightpanelnote {
-        width: 427px;
-    }
-    
+  .rightpanelnote {
+    width: 427px;
+  }
 }
 
-@media (max-width:700px) {
-    .rightpanel {
-        left: 18%;
-    }
+@media (max-width: 700px) {
+  .rightpanel {
+    left: 18%;
+  }
 }
 
-@media (max-width:600px) {
-    .rightpanel {
-        left: 15%;
-    }
+@media (max-width: 600px) {
+  .rightpanel {
+    left: 15%;
+  }
 }
 
-@media (max-width:550px) {
-    .rightpanel {
-        left: 10%;
-    }
+@media (max-width: 550px) {
+  .rightpanel {
+    left: 10%;
+  }
 }
 
-@media (max-width:500px) {
-    .rightpanelnote {
-        width: 400px;
-    }
+@media (max-width: 500px) {
+  .rightpanelnote {
+    width: 400px;
+  }
 }
 
-@media (max-width:480px) {
-    .rightpanelnote {
-        left: 15%;
-        width: 380px;
-    }
+@media (max-width: 480px) {
+  .rightpanelnote {
+    left: 15%;
+    width: 380px;
+  }
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
+  .rightpanelnote {
+    left: 15%;
+    width: 360px;
+  }
 
-    .rightpanelnote {
-        left: 15%;
-        width: 360px;
-    }
-
-    .card {
-        width: 320px;
-    }
+  .card {
+    width: 320px;
+  }
 }
 
-@media (max-width:440px) {
-
-    .rightpanelnote {
-        left: 13%;
-        width: 345px;
-    }
+@media (max-width: 440px) {
+  .rightpanelnote {
+    left: 13%;
+    width: 345px;
+  }
 }
 
-@media (max-width:400px) {
-
-    .rightpanelnote {
-        left: 12%;
-        width: 330px;
-    }
-
+@media (max-width: 400px) {
+  .rightpanelnote {
+    left: 12%;
+    width: 330px;
+  }
 }
 
-@media (max-width:380px) {
+@media (max-width: 380px) {
+  .rightpanel {
+    gap: 20px;
+  }
 
-    .rightpanel {
-        gap: 20px;
-    }
-
-    .rightpanelnote {
-        left: 12%;
-    }
-    
+  .rightpanelnote {
+    left: 12%;
+  }
 }
 
-@media (max-width:450px) {
-    .card {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 300px;
-        height: 250px;
-    }
+@media (max-width: 450px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 250px;
+  }
 
-    .change {
-        margin-left: 30px;
-    }
+  .change {
+    margin-left: 30px;
+  }
 }
 
-@media (max-width:450px) {
-    .card {
-        width: 300px;
-    }
+@media (max-width: 450px) {
+  .card {
+    width: 300px;
+  }
 }
 
-@media (max-width:420px) {
-    .card {
-        width: 280px;
-    }
+@media (max-width: 420px) {
+  .card {
+    width: 280px;
+  }
 }
 
-@media (max-width:400px) {
-    .card {
-        width: 260px;
-    }
+@media (max-width: 400px) {
+  .card {
+    width: 260px;
+  }
 }
