@@ -11,7 +11,7 @@ If you find this project helpful, don't forget to ⭐️ star the repo!
 - **Real-Time Market Data**: Fetch live cryptocurrency data using the CoinGecko API.
 - **Interactive Charts**: Integrated with TradingView for advanced charting and technical analysis.
 - **Seamless UI**: Built with a sleek and responsive interface for a smooth user experience.
-
+- **Dark Mode Toggle**: Enable dark and light mode screen with toggle
 ---
 
 ## 🛠️ Tech Stack
@@ -52,3 +52,6 @@ Follow these steps to run the project locally:
    ```bash
    npm run dev
    ```
+
+### Demo
+[![Koinx](https://img.youtube.com/vi/tlvaoP5nuVA/0.jpg)](https://youtu.be/tlvaoP5nuVA)
