@@ -40,3 +40,15 @@ Follow these steps to run the project locally:
    git clone https://github.com/kanugurajesh/Trading.git
    cd Trading
    ```
+2. Install the dependencies
+   ```bash
+   npm install
+   ```
+3. Add the environment variables
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Run the project
+   ```bash
+   npm run dev
+   ```
